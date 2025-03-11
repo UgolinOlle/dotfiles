@@ -96,7 +96,9 @@ alias ld="lazydocker"
 alias da="docker start"
 alias dx="docker exec -it"
 alias dc="docker compose"
-alias dl="docker ps -a"
+alias dr="docker restart"
+alias dl="docker logs"
+alias df="docker ps --format 'table \t{{.ID}}\t{{.Names}}\t{{.Status}}'"
 alias drs="docker compose down && docker compose up"
 
 # --- Kubernetes
@@ -233,3 +235,4 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/completion-for-pnpm.bash
+eval "$(rbenv init -)"
