@@ -96,16 +96,20 @@ if.app-id = 'org.mozilla.firefox'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
+if.app-id = 'com.jetbrains.intellij'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-run = "move-node-to-workspace 2"
+run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
-run = 'move-node-to-workspace 3'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = "com.tinyapp.TablePlus"
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
