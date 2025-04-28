@@ -92,7 +92,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 # --- Move specific applications to differents workspaces
 [[on-window-detected]]
-if.app-id = 'org.mozilla.firefox'
+if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
