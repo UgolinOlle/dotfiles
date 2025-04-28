@@ -9,6 +9,7 @@ cmd + alt - k : open -a "OrbStack"
 cmd + alt - t : open -a "TablePlus"
 cmd + alt - p : open -a "Postman"
 cmd + alt - j : open -a "Intellij IDEA"
+cmd + alt - v : open -a "Cursor"
 cmd + alt - z : open -a "Zoon"
 alt - return : open -a "Wezterm"
 alt - f : open ~ 
