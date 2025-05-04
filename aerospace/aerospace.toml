@@ -96,7 +96,7 @@ if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'com.todesktop.230313mzl4w4u92'
+if.app-id = 'com.void'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
@@ -104,7 +104,7 @@ if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
-if.app-id = 'com.postmanlabs.mac'
+if.app-id = 'io.httpie.desktop'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
@@ -112,12 +112,12 @@ if.app-id = "com.tinyapp.TablePlus"
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = "us.zoom.xos"
-run = 'move-node-to-workspace 6'
+if.app-id = "dev.kdrag0n.MacVirt"
+run = "move-node-to-workspace 6"
 
 [[on-window-detected]]
-if.app-id = "com.cron.electron"
-run = 'move-node-to-workspace 6'
+if.app-id = "us.zoom.xos"
+run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
