@@ -128,7 +128,7 @@ if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.iCal'
+if.app-id = 'com.cron.electron'
 run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
@@ -136,5 +136,5 @@ if.app-id = 'notion.id'
 run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
-if.app-id = 'com.linear'
+if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 0'
