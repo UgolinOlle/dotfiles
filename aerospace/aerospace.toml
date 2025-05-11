@@ -96,7 +96,7 @@ if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'com.void'
+if.app-id = 'com.microsoft.VSCodeInsiders'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
