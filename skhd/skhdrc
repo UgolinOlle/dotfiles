@@ -1,5 +1,5 @@
 # --- Applications
-cmd + alt - s : open -a "Arc"
+cmd + alt - a : open -a "Arc"
 cmd + alt - m : open -a "Mail"
 cmd + alt - c : open -a "Notion Calendar"
 cmd + alt - s : open -a "Spotify"
@@ -11,6 +11,10 @@ cmd + alt - h : open -a "HTTPie"
 cmd + alt - v : open -a "Cursor"
 cmd + alt - x : open -a "CleanMyMac"
 cmd + alt - z : open -a "Zoom"
+cmd + alt - f : open -a "Figma"
+cmd + alt - s : open -a "Screen Studio"
+cmd + alt - l : open -a "Slack"
+
 alt - return : open -a "Wezterm"
 alt - f : open ~ 
 
