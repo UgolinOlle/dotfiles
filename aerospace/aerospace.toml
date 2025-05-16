@@ -96,12 +96,16 @@ if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'com.void'
+if.app-id = 'com.todesktop.230313mzl4w4u92'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
@@ -113,7 +117,7 @@ run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = "dev.kdrag0n.MacVirt"
-run = "move-node-to-workspace 6"
+run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
 if.app-id = "us.zoom.xos"
@@ -137,4 +141,8 @@ run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 0'
+
+[[on-window-detected]]
+if.app-id = 'com.macpaw.CleanMyMac5'
 run = 'move-node-to-workspace 0'

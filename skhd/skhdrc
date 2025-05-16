@@ -8,8 +8,9 @@ cmd + alt - d : open -a "Discord"
 cmd + alt - o : open -a "OrbStack"
 cmd + alt - t : open -a "TablePlus"
 cmd + alt - h : open -a "HTTPie"
-cmd + alt - v : open -a "Void"
-cmd + alt - z : open -a "Zoon"
+cmd + alt - v : open -a "Cursor"
+cmd + alt - x : open -a "CleanMyMac"
+cmd + alt - z : open -a "Zoom"
 alt - return : open -a "Wezterm"
 alt - f : open ~ 
 
