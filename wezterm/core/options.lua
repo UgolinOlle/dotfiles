@@ -17,7 +17,7 @@ local M = {
 	},
 	max_fps = 120,
 	prefer_egl = true,
-	window_background_opacity = 0.6,
+	window_background_opacity = 0.9,
 	macos_window_background_blur = 20,
 	pane_focus_follows_mouse = true,
 }
