@@ -2,7 +2,7 @@
 cmd + alt - a : open -a "Arc"
 cmd + alt - m : open -a "Mail"
 cmd + alt - c : open -a "Notion Calendar"
-cmd + alt - s : open -a "Spotify"
+cmd + alt - y : open -a "Spotify"
 cmd + alt - n : open -a "Notion"
 cmd + alt - d : open -a "Discord"
 cmd + alt - o : open -a "OrbStack"
@@ -14,6 +14,7 @@ cmd + alt - z : open -a "Zoom"
 cmd + alt - f : open -a "Figma"
 cmd + alt - s : open -a "Screen Studio"
 cmd + alt - l : open -a "Slack"
+cmd + alt - s : open -a "Screen Studio"
 
 alt - return : open -a "Wezterm"
 alt - f : open ~ 
