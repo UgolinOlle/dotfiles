@@ -124,45 +124,49 @@ run = 'move-node-to-workspace 4'
 if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace 4'
 
-# ─── Workspace 4 – Design ────────────────────────────────────────────────
+# ─── Workspace 5 – Design ────────────────────────────────────────────────
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace 5'
 
-# ─── Workspace 5 – Emails / Agenda ───────────────────────────────────────
+[[on-window-detected]]
+if.app-id = 'com.timpler.screenstudio'
+run = 'move-node-to-workspace 5'
+
+# ─── Workspace 6 – Emails / Agenda ───────────────────────────────────────
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.cron.electron'
-run = 'move-node-to-workspace 5'
-
-# ─── Workspace 6 – Notes / Documentation ─────────────────────────────────
-[[on-window-detected]]
-if.app-id = 'notion.id'
 run = 'move-node-to-workspace 6'
 
-# ─── Workspace 7 – Communication ─────────────────────────────────────────
+# ─── Workspace 7 – Notes / Documentation ─────────────────────────────────
+[[on-window-detected]]
+if.app-id = 'notion.id'
+run = 'move-node-to-workspace 7'
+
+# ─── Workspace 8 – Communication ─────────────────────────────────────────
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace 7'
+run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 7'
+run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 7'
-
-# ─── Workspace 8 – Utilitaires système ───────────────────────────────────
-[[on-window-detected]]
-if.app-id = 'com.macpaw.CleanMyMac5'
 run = 'move-node-to-workspace 8'
 
-# ─── Workspace 9 – Détente / Musique ─────────────────────────────────────
+# ─── Workspace 9 – Utilitaires système ───────────────────────────────────
+[[on-window-detected]]
+if.app-id = 'com.macpaw.CleanMyMac5'
+run = 'move-node-to-workspace 9'
+
+# ─── Workspace 0 – Détente / Musique ─────────────────────────────────────
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 9'
+run = 'move-node-to-workspace 0'
 
