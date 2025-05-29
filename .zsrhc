@@ -12,6 +12,8 @@ export PATH="/usr/local/bin:/opt/homebrew/bin:$PYENV_ROOT/bin:$HOME/Library/Pyth
 export NVM_DIR="$HOME/.nvm"
 export XDG_CONFIG_HOME="/Users/uolle/.config"
 
+eval "$(zoxide init zsh)"
+
 # --- NVM ----------------------------------------------------------------------------------------------------------- #
 
 # NVM Setup
@@ -19,19 +21,6 @@ if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
   source "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 fi
-
-# --- THEMES -------------------------------------------------------------------------------------------------------- #
-
-# -- Oh my posh
-# eval "$(oh-my-posh init zsh --config ~/Developer/dotfiles/oh-my-posh/themes/clean-detailed.omp.json)"
-
-# space
-# cloud-context
-
-# -- Zsh theme
-# export ZSH_THEME="imp"
-
-# simplerich
 
 # --- PLUGINS ------------------------------------------------------------------------------------------------------- #
 
@@ -142,7 +131,7 @@ alias ports="lsof -i -P -n | grep LISTEN"
 # --- FUNCTIONS ----------------------------------------------------------------------------------------------------- #
 
 # --- Create a Next.js app with custom parameters
-function next_app() {
+function cnext() {
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Usage: next_app <app-name> <git-remote-url>"
     return 1
@@ -177,7 +166,7 @@ function dbuild() {
 }
 
 # --- Find running process
-function find_process() {
+function fprocess() {
   if [ -z "$1" ]; then
     echo "Usage: find_process <keyword>"
     return 1
@@ -214,13 +203,16 @@ function decompress() {
   echo "Archive $1 decompressed."
 }
 
+# --- Zoxide shortcut
+zi() {
+  cd "$(zoxide query -l | fzf)" || return
+  exec zsh 
+}
+
 # --- COMPLETIONS ---------------------------------------------------------------------------------------------------- #
 
 # -- Global completion
 fpath=(~/.zsh/completions $fpath)
-
-# -- Dart completion
-[[ -f /Users/uolle/.dart-cli-completion/zsh-config.zsh ]] && . /Users/uolle/.dart-cli-completion/zsh-config.zsh || true
 
 # -- Ngrok completion
 if command -v ngrok &>/dev/null; then
@@ -232,14 +224,12 @@ fi
 # -- Source powerlevel10k
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 eval "$(rbenv init -)"
 
-# pnpm
+# -- PNPM
 export PNPM_HOME="/Users/uolle/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end

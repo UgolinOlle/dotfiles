@@ -3,11 +3,14 @@ local wezterm = require("wezterm")
 local M = {
 	font_size = 12.5,
 	line_height = 1.4,
-	font = wezterm.font_with_fallback({ { family = "JetbrainsMono Nerd Font" } }),
+	font = wezterm.font_with_fallback({
+		{ family = "Fira Code Retina" },
+		{ family = "Hack Nerd Font" },
+		{ family = "Monospace" },
+	}),
 	window_decorations = "RESIZE",
 	hide_tab_bar_if_only_one_tab = true,
 	default_cursor_style = "BlinkingUnderline",
-	-- colors = require("themes.cyberdream"),
 	color_scheme = "Abernathy",
 	window_padding = {
 		left = 20,
@@ -23,5 +26,3 @@ local M = {
 }
 
 return M
-
--- { family = "CommitMono" },

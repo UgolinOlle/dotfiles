@@ -34,6 +34,15 @@ local M = {
 			action = wz.action.ShowTabNavigator,
 		},
 
+		--- Launcher
+		{
+			key = "x",
+			mods = "CTRL|SHIFT",
+			action = wz.action.SpawnCommandInNewTab({
+				args = { "zsh", "-i", "-c", "zi" },
+			}),
+		},
+
 		--- Split panes
 		{
 			key = "|",
