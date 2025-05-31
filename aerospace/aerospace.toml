@@ -112,7 +112,7 @@ if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
+if.app-id = 'dev.warp.Warp-Stable'
 run = 'move-node-to-workspace 3'
 
 # ─── Workspace 4 – API / Base de données ─────────────────────────────────
