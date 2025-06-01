@@ -103,7 +103,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 # ─── Workspace 1 – Navigation ─────────────────────────────────────────────
 [[on-window-detected]]
-if.app-id = 'app.zen-browser.zen'
+if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 1'
 
 # ─── Workspace 2 / 3 – Développement (Cursor) ─────────────────────────────────
