@@ -108,7 +108,7 @@ run = 'move-node-to-workspace 1'
 
 # ─── Workspace 2 / 3 – Développement (Cursor) ─────────────────────────────────
 [[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode'
+if.app-id = 'com.todesktop.230313mzl4w4u92'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
