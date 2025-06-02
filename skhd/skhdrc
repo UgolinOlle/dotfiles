@@ -15,6 +15,7 @@ cmd + alt - f : open -a "Figma"
 cmd + alt - s : open -a "Screen Studio"
 cmd + alt - l : open -a "Slack"
 cmd + alt - s : open -a "Screen Studio"
+cmd + alt - w : open -a "WhatsApp"
 
 alt - return : open -a "Wezterm"
 alt - f : open ~ 
