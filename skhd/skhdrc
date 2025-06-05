@@ -1,7 +1,6 @@
 # --- Applications
-cmd + alt - a : open -a "Arc"
+cmd + alt - a : open -a "Opera Air"
 cmd + alt - m : open -a "Mail"
-cmd + alt - e : open -a "Notion Calendar"
 cmd + alt - y : open -a "Spotify"
 cmd + alt - n : open -a "Notion"
 cmd + alt - d : open -a "Discord"

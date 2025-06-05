@@ -103,6 +103,10 @@ alt-shift-l = ['join-with right', 'mode main']
 
 # ─── Workspace 1 – Navigation ─────────────────────────────────────────────
 [[on-window-detected]]
+if.app-id = 'com.operasoftware.OperaAir'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 1'
 
