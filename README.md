@@ -214,13 +214,55 @@ Key configuration files:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes:
+We welcome contributions! Please follow these steps:
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+3. Make your changes
+4. Commit your changes (`git commit -m 'feat: add some AmazingFeature'`)
+5. Push to the branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
+
+### Issue Templates
+
+We provide templates for:
+
+- Bug Reports
+- Feature Requests
+
+Please use the appropriate template when creating a new issue.
+
+### Pull Request Template
+
+When creating a pull request, please:
+
+1. Use the provided template
+2. Fill in all relevant sections
+3. Follow the checklist
+4. Link to any related issues
+
+### Commit Messages
+
+We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+Types:
+
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes
+- `refactor`: Code refactoring
+- `perf`: Performance improvements
+- `test`: Adding or modifying tests
+- `chore`: Maintenance tasks
 
 ## 📝 License
 
@@ -243,3 +285,55 @@ For questions or suggestions, feel free to reach out through:
 
 - GitHub Issues
 - Email: [hello@ugolin-olle.com](mailto:hello@ugolin-olle.com)
+
+## 🔄 Changelog Management
+
+This project follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+### Commit Convention
+
+We use [Conventional Commits](https://www.conventionalcommits.org/) for our commit messages. This allows us to automatically generate changelogs and version numbers.
+
+Commit types:
+
+- `feat`: New feature (triggers a minor version bump)
+- `fix`: Bug fix (triggers a patch version bump)
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code refactoring
+- `perf`: Performance improvements
+- `test`: Adding or modifying tests
+- `build`: Build system changes
+- `ci`: CI configuration changes
+- `chore`: Maintenance tasks
+- `revert`: Reverting changes
+
+Example:
+
+```bash
+git commit -m "feat: add new Neovim plugin configuration"
+```
+
+### Creating a Release
+
+To create a new release, use one of the following npm scripts:
+
+```bash
+# Regular release
+npm run release
+
+# Prerelease versions
+npm run release:alpha  # Creates an alpha version
+npm run release:beta   # Creates a beta version
+npm run release:rc     # Creates a release candidate
+```
+
+This will:
+
+- Update the version in package.json
+- Update the CHANGELOG.md
+- Create a git tag
+- Push the changes
+- Create a GitHub release
+
+The GitHub Actions workflow will automatically handle the release process when changes are pushed to the main branch.
