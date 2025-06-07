@@ -4,10 +4,11 @@
   "description": "Personal dotfiles configuration",
   "private": true,
   "scripts": {
-    "release": "standard-version",
-    "release:alpha": "standard-version --prerelease alpha",
-    "release:beta": "standard-version --prerelease beta",
-    "release:rc": "standard-version --prerelease rc"
+    "release": "standard-version && npm run git:push",
+    "release:alpha": "standard-version --prerelease alpha && npm run git:push",
+    "release:beta": "standard-version --prerelease beta && npm run git:push",
+    "release:rc": "standard-version --prerelease rc && npm run git:push",
+    "git:push": "git push --follow-tags origin stable"
   },
   "devDependencies": {
     "standard-version": "^9.5.0"
