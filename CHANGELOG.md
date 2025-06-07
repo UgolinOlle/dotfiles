@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### [1.1.1](https://github.com/UgolinOlle/dotfiles/compare/v1.1.0...v1.1.1) (2025-06-07)
+
+
+### Fixed
+
+* **core:** adding automatically push & update gitignore to remove node_modules ([ff8a3e6](https://github.com/UgolinOlle/dotfiles/commit/ff8a3e6de1e6a63650d1745efa3832d2a465ba4b))
+
 ## 1.1.0 (2025-06-07)
 
 
