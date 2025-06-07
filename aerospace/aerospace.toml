@@ -137,6 +137,10 @@ run = 'move-node-to-workspace 5'
 if.app-id = 'com.timpler.screenstudio'
 run = 'move-node-to-workspace 5'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.FinalCut'
+run = 'move-node-to-workspace 5'
+
 # ─── Workspace 6 – Emails / Agenda ───────────────────────────────────────
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
