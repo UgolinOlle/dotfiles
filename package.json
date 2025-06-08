@@ -1,0 +1,76 @@
+{
+  "name": "dotfiles",
+  "version": "1.1.1",
+  "description": "Personal dotfiles configuration",
+  "private": true,
+  "scripts": {
+    "release": "standard-version && npm run git:push",
+    "release:alpha": "standard-version --prerelease alpha && npm run git:push",
+    "release:beta": "standard-version --prerelease beta && npm run git:push",
+    "release:rc": "standard-version --prerelease rc && npm run git:push",
+    "git:push": "git push --follow-tags origin stable"
+  },
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  },
+  "standard-version": {
+    "header": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\nand this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).",
+    "types": [
+      {
+        "type": "feat",
+        "section": "Added",
+        "hidden": false
+      },
+      {
+        "type": "fix",
+        "section": "Fixed",
+        "hidden": false
+      },
+      {
+        "type": "docs",
+        "section": "Documentation",
+        "hidden": false
+      },
+      {
+        "type": "style",
+        "section": "Styles",
+        "hidden": false
+      },
+      {
+        "type": "refactor",
+        "section": "Refactored",
+        "hidden": false
+      },
+      {
+        "type": "perf",
+        "section": "Performance",
+        "hidden": false
+      },
+      {
+        "type": "test",
+        "section": "Tests",
+        "hidden": false
+      },
+      {
+        "type": "build",
+        "section": "Builds",
+        "hidden": false
+      },
+      {
+        "type": "ci",
+        "section": "CI",
+        "hidden": false
+      },
+      {
+        "type": "chore",
+        "section": "Chores",
+        "hidden": false
+      },
+      {
+        "type": "revert",
+        "section": "Reverts",
+        "hidden": false
+      }
+    ]
+  }
+}
