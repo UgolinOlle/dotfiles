@@ -1,10 +1,10 @@
 # --- Applications
-cmd + alt - a : open -a "Opera Air"
+cmd + alt - a : open -a "Dia"
 cmd + alt - m : open -a "Mail"
 cmd + alt - y : open -a "Spotify"
 cmd + alt - n : open -a "Notion"
 cmd + alt - d : open -a "Discord"
-cmd + alt - k : open -a "OrbStack"
+cmd + alt - k : open -a "Podman Desktop"
 cmd + alt - t : open -a "TablePlus"
 cmd + alt - h : open -a "HTTPie"
 cmd + alt - c : open -a "Cursor"

@@ -103,11 +103,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 # ─── Workspace 1 – Navigation ─────────────────────────────────────────────
 [[on-window-detected]]
-if.app-id = 'com.operasoftware.OperaAir'
-run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'company.thebrowser.dia'
 run = 'move-node-to-workspace 1'
 
 # ─── Workspace 2 / 3 – Développement (Cursor) ─────────────────────────────────
@@ -126,6 +122,10 @@ run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'io.podmandesktop.PodmanDesktop'
 run = 'move-node-to-workspace 4'
 
 # ─── Workspace 5 – Design ────────────────────────────────────────────────
