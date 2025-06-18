@@ -172,6 +172,10 @@ run = 'move-node-to-workspace 8'
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 8'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'move-node-to-workspace 8'
+
 # ─── Workspace 9 – Utilitaires système ───────────────────────────────────
 [[on-window-detected]]
 if.app-id = 'com.macpaw.CleanMyMac5'
