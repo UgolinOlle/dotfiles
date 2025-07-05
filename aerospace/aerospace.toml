@@ -102,11 +102,13 @@ alt-shift-l = ['join-with right', 'mode main']
 # ─── App Auto-Assignment Rules ──────────────────────────────────────────────────
 
 # ─── Workspace 1 – Navigation ─────────────────────────────────────────────
+
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.dia'
 run = 'move-node-to-workspace 1'
 
 # ─── Workspace 2 / 3 – Développement (Cursor) ─────────────────────────────────
+
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
 run = 'move-node-to-workspace 2'
@@ -116,6 +118,7 @@ if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace 3'
 
 # ─── Workspace 4 – API / Base de données ─────────────────────────────────
+
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
 run = 'move-node-to-workspace 4'
@@ -129,6 +132,7 @@ if.app-id = 'io.podmandesktop.PodmanDesktop'
 run = 'move-node-to-workspace 4'
 
 # ─── Workspace 5 – Design ────────────────────────────────────────────────
+
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace 5'
@@ -142,6 +146,7 @@ if.app-id = 'com.apple.FinalCut'
 run = 'move-node-to-workspace 5'
 
 # ─── Workspace 6 – Emails / Agenda / Notes / Documentation ----------------
+
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace 6'
@@ -173,12 +178,20 @@ if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace 8'
 
 # ─── Workspace 9 – Utilitaires système ───────────────────────────────────
+
 [[on-window-detected]]
 if.app-id = 'com.macpaw.CleanMyMac5'
 run = 'move-node-to-workspace 9'
 
 # ─── Workspace 0 – Détente / Musique ─────────────────────────────────────
+
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace 0'
+
+# --- Miscellaneous -------------------------------------------------------
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
 
