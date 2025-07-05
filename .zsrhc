@@ -236,6 +236,16 @@ function kport() {
   lsof -ti :"$1" | xargs kill -9
 }
 
+# --- Generate password
+function randpw() {
+  openssl rand -base64 4 | md5 | head -c$1 ; echo
+}
+
+# --- Generate sha256
+function sha256() {
+    printf "%s %s\n" "$1" "$2" | sha256sum --check
+}
+
 # --- COMPLETIONS ---------------------------------------------------------------------------------------------------- #
 
 # --- Global completion
