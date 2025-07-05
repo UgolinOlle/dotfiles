@@ -1,6 +1,4 @@
-.harlequin.toml
 github-copilot/
-.dart-cli-completion/
 tool_state
 flutter/
 btop/
@@ -9,3 +7,4 @@ ngrok/
 stripe/
 com.strapi/
 node_modules/
+composer/
