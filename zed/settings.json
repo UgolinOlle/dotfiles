@@ -7,6 +7,10 @@
 	"icon_theme": "Material Icon Theme",
 	"ui_font_size": 14,
 	"buffer_font_size": 13,
+	"terminal": {
+		"font_family": "FiraCode Nerd Font Mono",
+		"font_size": 11
+	},
 	"scrollbar": {
 		"show": "never"
 	},
@@ -81,8 +85,8 @@
 		"default_profile": "write",
 		"always_allow_tool_actions": true,
 		"default_model": {
-			"provider": "zed.dev",
-			"model": "claude-sonnet-4-thinking"
+			"provider": "copilot_chat",
+			"model": "claude-3.7-sonnet"
 		}
 	},
 
