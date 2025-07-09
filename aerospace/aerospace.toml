@@ -178,6 +178,10 @@ if.app-id = 'com.apple.MobileSMS'
 run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.FaceTime'
+run = 'move-node-to-workspace'
+
+[[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace 8'
 
