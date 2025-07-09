@@ -78,7 +78,8 @@
 
 	"show_copilot_suggestions": true,
 	"features": {
-		"copilot": true
+		"edit_prediction_provider": "zed",
+  "copilot": true
 	},
 	"agent": {
 		"version": "2",
