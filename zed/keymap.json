@@ -1,0 +1,82 @@
+[
+	{
+		"context": "Workspace",
+		"bindings": {
+			"space space": "file_finder::Toggle",
+			"ctrl-t": "terminal_panel::ToggleFocus"
+		}
+	},
+	{
+		"context": "Editor && !menu",
+		"bindings": {
+			"cmd-shift-l": "editor::Format",
+			"cmd-shift-i": "editor::SelectAllMatches"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == insert && !menu",
+		"bindings": {
+			"j j": "vim::NormalBefore",
+			"j k": "vim::NormalBefore",
+			"k j": "vim::NormalBefore"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+		"bindings": {
+			"ctrl-h": "workspace::ActivatePaneLeft",
+			"ctrl-l": "workspace::ActivatePaneRight",
+			"ctrl-k": "workspace::ActivatePaneUp",
+			"ctrl-j": "workspace::ActivatePaneDown",
+
+			"space c a": "editor::ToggleCodeActions",
+			"space .": "editor::ToggleCodeActions",
+			"space c r": "editor::Rename",
+
+			"g d": "editor::GoToDefinition",
+			"g D": "editor::GoToDefinitionSplit",
+			"g i": "editor::GoToImplementation",
+			"g I": "editor::GoToImplementationSplit",
+			"g t": "editor::GoToTypeDefinition",
+			"g T": "editor::GoToTypeDefinitionSplit",
+			"g r": "editor::FindAllReferences",
+
+			"] d": "editor::GoToDiagnostic",
+			"[ d": "editor::GoToPreviousDiagnostic",
+			"] e": "editor::GoToDiagnostic",
+			"[ e": "editor::GoToPreviousDiagnostic",
+			"] h": "editor::GoToHunk",
+			"[ h": "editor::GoToPreviousHunk",
+
+			"s s": "outline::Toggle",
+			"s S": "project_symbols::Toggle",
+
+			"space x x": "diagnostics::Deploy",
+
+			"shift-h": "pane::ActivatePreviousItem",
+			"shift-l": "pane::ActivateNextItem",
+			"shift-q": "pane::CloseActiveItem",
+			"ctrl-q": "pane::CloseActiveItem",
+			"space b d": "pane::CloseActiveItem",
+			"space b o": "pane::CloseInactiveItems",
+
+			"ctrl-s": "workspace::Save",
+			"space /": "pane::DeploySearch",
+			"space e": "pane::RevealInProjectPanel"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+		"bindings": {
+			"g c": "editor::ToggleComments"
+		}
+	},
+	{
+		"context": "Editor && vim_operator == c",
+		"bindings": {
+			"c": "vim::CurrentLine",
+			"r": "editor::Rename",
+			"a": "editor::ToggleCodeActions"
+		}
+	}
+]

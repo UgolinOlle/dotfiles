@@ -1,0 +1,121 @@
+{
+	"theme": {
+		"mode": "system",
+		"light": "One Light",
+		"dark": "One Dark"
+	},
+	"icon_theme": "Material Icon Theme",
+	"ui_font_size": 14,
+	"buffer_font_size": 13,
+	"scrollbar": {
+		"show": "never"
+	},
+	"relative_line_numbers": true,
+	"indent_guides": {
+		"enabled": true,
+		"coloring": "indent_aware"
+	},
+	"soft_wrap": "editor_width",
+	"vertical_scroll_margin": 8,
+	"tab_bar": {
+		"show": true
+	},
+
+	"tab_size": 2,
+	"hard_tabs": true,
+	"tabs": {
+		"show_diagnostics": "errors"
+	},
+
+	"vim_mode": true,
+	"format_on_save": "on",
+	"auto_signature_help": true,
+	"use_smartcase_search": true,
+
+	"lsp": {
+		"tailwindcss-language-server": {
+			"settings": {
+				"classAttributes": ["class", "className", "ngClass", "styles"]
+			}
+		}
+	},
+
+	"languages": {
+		"TypeScript": {
+			"inlay_hints": {
+				"enabled": true
+			}
+		},
+		"PHP": {
+			"inlay_hints": {
+				"enabled": true
+			}
+		},
+		"Markdown": {
+			"soft_wrap": "preferred_line_length",
+			"preferred_line_length": 80,
+			"hard_tabs": false
+		},
+		"YAML": {
+			"hard_tabs": false
+		}
+	},
+
+	"inlay_hints": {
+		"enabled": true,
+		"show_type_hints": true,
+		"show_parameter_hints": true,
+		"show_other_hints": true
+	},
+
+	"git": {
+		"git_gutter": "tracked_files"
+	},
+
+	"show_copilot_suggestions": true,
+	"features": {
+		"copilot": true
+	},
+	"agent": {
+		"version": "2",
+		"default_profile": "write",
+		"always_allow_tool_actions": true,
+		"default_model": {
+			"provider": "zed.dev",
+			"model": "claude-sonnet-4-thinking"
+		}
+	},
+
+	"restore_on_startup": "none",
+
+	"telemetry": {
+		"metrics": false,
+		"diagnostics": false
+	},
+	"semantic_index": {
+		"enabled": true
+	},
+
+	"file_scan_exclusions": [
+		"**/.git",
+		"**/.svn",
+		"**/.hg",
+		"**/CVS",
+		"**/.DS_Store",
+		"**/Thumbs.db",
+		"**/.classpath",
+		"**/.settings",
+		"**/out",
+		"**/dist",
+		"**/.husky",
+		"**/.turbo",
+		"**/.vscode-test",
+		"**/.vscode",
+		"**/.next",
+		"**/.storybook",
+		"**/.tap",
+		"**/.nyc_output",
+		"**/report",
+		"**/node_modules"
+	]
+}

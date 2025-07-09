@@ -107,10 +107,14 @@ alt-shift-l = ['join-with right', 'mode main']
 if.app-id = 'company.thebrowser.dia'
 run = 'move-node-to-workspace 1'
 
-# ─── Workspace 2 / 3 – Développement (Cursor) ─────────────────────────────────
+# ─── Workspace 2 / 3 – Développement ─────────────────────────────────
 
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
