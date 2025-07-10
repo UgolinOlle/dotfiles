@@ -179,7 +179,7 @@ run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.FaceTime'
-run = 'move-node-to-workspace'
+run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
@@ -210,4 +210,3 @@ run = 'move-node-to-workspace 0'
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'
-
