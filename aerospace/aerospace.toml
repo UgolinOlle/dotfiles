@@ -195,6 +195,10 @@ run = 'move-node-to-workspace 9'
 if.app-id = 'com.apple.ActivityMonitor'
 run = 'move-node-to-workspace 9'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace 9'
+
 # ─── Workspace 0 – Détente / Musique ─────────────────────────────────────
 
 [[on-window-detected]]
