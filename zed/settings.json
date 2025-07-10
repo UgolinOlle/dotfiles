@@ -79,7 +79,7 @@
 	"show_copilot_suggestions": true,
 	"features": {
 		"edit_prediction_provider": "zed",
-  "copilot": true
+		"copilot": true
 	},
 	"agent": {
 		"version": "2",
@@ -87,7 +87,7 @@
 		"always_allow_tool_actions": true,
 		"default_model": {
 			"provider": "copilot_chat",
-			"model": "claude-3.7-sonnet"
+			"model": "gpt-4.1"
 		}
 	},
 
