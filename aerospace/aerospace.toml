@@ -121,7 +121,7 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace 3'
 
-# ─── Workspace 4 – API / Base de données ─────────────────────────────────
+# ─── Workspace 4 / 5 – API / Base de données ─────────────────────────────────
 
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
@@ -129,77 +129,71 @@ run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 5'
 
-[[on-window-detected]]
-if.app-id = 'io.podmandesktop.PodmanDesktop'
-run = 'move-node-to-workspace 4'
-
-# ─── Workspace 5 – Design ────────────────────────────────────────────────
+# ─── Workspace 6 – Design ────────────────────────────────────────────────
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.timpler.screenstudio'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.FinalCut'
-run = 'move-node-to-workspace 5'
-
-# ─── Workspace 6 – Emails / Agenda / Notes / Documentation ----------------
-
-[[on-window-detected]]
-if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace 6'
+
+# ─── Workspace 7 / 8 – Emails / Agenda / Notes / Documentation ----------------
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace 6'
 
-# ─── Workspace 7 / 8 – Communication ─────────────────────────────────────────
+[[on-window-detected]]
+if.app-id = 'com.cron.electron'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 7'
+
+# ─── Workspace 8 / 9 – Communication ─────────────────────────────────────────
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = 'move-node-to-workspace 7'
+run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 7'
+run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
-run = 'move-node-to-workspace 7'
+run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.FaceTime'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace 9'
 
-# ─── Workspace 9 – Utilitaires système ───────────────────────────────────
+# ─── Workspace 0 – Utilitaires système / Music ───────────────────────────────────
 
 [[on-window-detected]]
 if.app-id = 'com.macpaw.CleanMyMac5'
-run = 'move-node-to-workspace 9'
+run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.ActivityMonitor'
-run = 'move-node-to-workspace 9'
+run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = 'move-node-to-workspace 9'
-
-# ─── Workspace 0 – Détente / Musique ─────────────────────────────────────
+run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
