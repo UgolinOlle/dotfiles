@@ -6,10 +6,26 @@
 	},
 	"icon_theme": "Material Icon Theme",
 	"ui_font_size": 14,
-	"buffer_font_size": 13,
+	"buffer_font_size": 12,
+	"cursor_blink": true,
+	"formatter": "prettier",
+	"tab_bar": {
+		"show": true,
+		"show_nav_history_buttons": false
+	},
 	"terminal": {
-		"font_family": "FiraCode Nerd Font Mono",
-		"font_size": 11
+		"font_family": "JetBrainsMono Nerd Font Mono",
+		"font_size": 11,
+		"cursor_shape": "bar",
+		"blinking": "on",
+		"shell": "system",
+		"default_height": 1000
+	},
+	"project_panel": {
+		"indent_size": 12
+	},
+	"experimental.theme_overrides": {
+		"panel.focused_border": "#FF0000"
 	},
 	"scrollbar": {
 		"show": "never"
@@ -21,14 +37,13 @@
 	},
 	"soft_wrap": "editor_width",
 	"vertical_scroll_margin": 8,
-	"tab_bar": {
-		"show": true
-	},
 
 	"tab_size": 2,
 	"hard_tabs": true,
 	"tabs": {
-		"show_diagnostics": "errors"
+		"show_diagnostics": "errors",
+		"file_icons": true,
+		"git_status": true
 	},
 
 	"vim_mode": true,
@@ -46,8 +61,20 @@
 
 	"languages": {
 		"TypeScript": {
+			"language_servers": ["typescript-language-server", "!vtsls", "..."],
+			"code_actions_on_format": {
+				"source.organizeImports": true,
+				"source.fixAll.eslint": true
+			},
 			"inlay_hints": {
 				"enabled": true
+			}
+		},
+		"TSX": {
+			"language_servers": ["typescript-language-server", "!vtsls", "..."],
+			"code_actions_on_format": {
+				"source.organizeImports": true,
+				"source.fixAll.eslint": true
 			}
 		},
 		"PHP": {
@@ -82,7 +109,6 @@
 		"copilot": true
 	},
 	"agent": {
-		"version": "2",
 		"default_profile": "write",
 		"always_allow_tool_actions": true,
 		"default_model": {
@@ -96,9 +122,6 @@
 	"telemetry": {
 		"metrics": false,
 		"diagnostics": false
-	},
-	"semantic_index": {
-		"enabled": true
 	},
 
 	"file_scan_exclusions": [
