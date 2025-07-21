@@ -65,6 +65,7 @@ alias cat="bat"
 alias sshreload="eval \$(ssh-agent -s) && ssh-add -K ~/.ssh/id_rsa"
 alias ports="lsof -i -P -n | grep LISTEN"
 alias x="exit"
+alias tp="taproom"
 
 if command -v mise &>/dev/null; then
   eval "$(mise activate zsh)"
