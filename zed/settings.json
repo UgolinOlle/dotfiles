@@ -1,9 +1,10 @@
 {
-	"agent": {
+	"theme": "Vercel Light",
+ "agent": {
 		"always_allow_tool_actions": true,
 		"default_model": {
-			"model": "claude-sonnet-4",
-			"provider": "zed.dev"
+			"model": "gpt-4.1",
+			"provider": "copilot_chat"
 		},
 		"default_profile": "write"
 	},

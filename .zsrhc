@@ -264,3 +264,8 @@ eval "$(rbenv init -)"
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/uolle/.lmstudio/bin"
+# End of LM Studio CLI section
+
