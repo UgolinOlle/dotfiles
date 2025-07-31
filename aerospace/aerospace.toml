@@ -118,6 +118,10 @@ if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
+if.app-id = 'com.openai.chat'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace 3'
 
@@ -141,7 +145,7 @@ run = 'move-node-to-workspace 6'
 if.app-id = 'com.timpler.screenstudio'
 run = 'move-node-to-workspace 6'
 
-# ─── Workspace 6/ 7 / 8 – Emails / Agenda / Notes / Documentation ---------
+# ─── Workspace 6 / 7 / 8 – Emails / Agenda / Notes / Documentation ---------
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
@@ -174,16 +178,8 @@ if.app-id = 'ru.keepcoder.Telegram'
 run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace 0'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.FaceTime'
-run = 'move-node-to-workspace 0'
-
-[[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 0'
+run = 'move-node-to-workspace 9'
 
 # ─── Workspace 0 – Utilitaires système / Music ───────────────────────────────────
 
@@ -207,4 +203,12 @@ run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.FaceTime'
 run = 'layout floating'
