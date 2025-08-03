@@ -118,7 +118,7 @@ if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.openai.chat'
+if.app-id = 'com.anthropic.claudefordesktop'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
@@ -141,10 +141,7 @@ run = 'move-node-to-workspace 5'
 if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace 6'
 
-[[on-window-detected]]
 if.app-id = 'com.timpler.screenstudio'
-run = 'move-node-to-workspace 6'
-
 # ─── Workspace 6 / 7 / 8 – Emails / Agenda / Notes / Documentation ---------
 
 [[on-window-detected]]
@@ -195,10 +192,6 @@ run = 'move-node-to-workspace 0'
 if.app-id = 'com.apple.finder'
 run = 'move-node-to-workspace 0'
 
-[[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 0'
-
 # --- Miscellaneous -------------------------------------------------------
 
 [[on-window-detected]]
@@ -211,4 +204,11 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.FaceTime'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'layout floating'
+
+[[on-window-detected]]
 run = 'layout floating'
