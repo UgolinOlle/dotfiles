@@ -141,7 +141,6 @@ run = 'move-node-to-workspace 5'
 if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace 6'
 
-if.app-id = 'com.timpler.screenstudio'
 # ─── Workspace 6 / 7 / 8 – Emails / Agenda / Notes / Documentation ---------
 
 [[on-window-detected]]
@@ -211,4 +210,5 @@ if.app-id = 'com.spotify.client'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.timpler.screenstudio'
 run = 'layout floating'
