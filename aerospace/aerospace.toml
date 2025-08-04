@@ -99,58 +99,56 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-# ─── App Auto-Assignment Rules ──────────────────────────────────────────────────
+# ─── Workspace Organization (Work-Optimized) ──────────────────────────────────
 
-# ─── Workspace 1 – Navigation ─────────────────────────────────────────────
-
+# Workspace 1 → Browser & Navigation
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.dia'
 run = 'move-node-to-workspace 1'
 
-# ─── Workspace 2 / 3 – Développement ─────────────────────────────────
-
-[[on-window-detected]]
-if.app-id = 'com.todesktop.230313mzl4w4u92'
-run = 'move-node-to-workspace 2'
-
+# Workspace 2 → Code Editors & IDEs  
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 2'
+
+# Workspace 3 → Terminal & AI Tools
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
+if.app-id = 'com.conductor.app'
 run = 'move-node-to-workspace 3'
 
-# ─── Workspace 4 / 5 – API / Base de données ─────────────────────────────────
-
+# Workspace 4 → API Testing & Development Tools
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
 run = 'move-node-to-workspace 4'
 
+# Workspace 5 → Database Management
 [[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace 5'
 
-# ─── Workspace 6 – Design ────────────────────────────────────────────────
-
+# Workspace 6 → Design & Documentation
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace 6'
-
-# ─── Workspace 6 / 7 / 8 – Emails / Agenda / Notes / Documentation ---------
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace 6'
 
+# Workspace 7 → Project Management (Secondary Monitor)
 [[on-window-detected]]
 if.app-id = 'com.linear'
 run = 'move-node-to-workspace 7'
 
+# Workspace 8 → Calendar & Email (Secondary Monitor)
 [[on-window-detected]]
 if.app-id = 'com.cron.electron'
 run = 'move-node-to-workspace 8'
@@ -159,14 +157,13 @@ run = 'move-node-to-workspace 8'
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace 8'
 
-# ─── Workspace 9 / 0 – Communication ─────────────────────────────────────────
-
+# Workspace 9 → Communication (Secondary Monitor)
 [[on-window-detected]]
-if.app-id = 'net.whatsapp.WhatsApp'
+if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
+if.app-id = 'net.whatsapp.WhatsApp'
 run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
@@ -177,21 +174,20 @@ run = 'move-node-to-workspace 9'
 if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace 9'
 
-# ─── Workspace 0 – Utilitaires système / Music ───────────────────────────────────
+# Workspace 0 → System Utilities (Secondary Monitor)
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
 if.app-id = 'com.macpaw.CleanMyMac5'
 run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.ActivityMonitor'
-run = 'move-node-to-workspace 0'
-
-[[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'move-node-to-workspace 0'
 
-# --- Miscellaneous -------------------------------------------------------
+# ─── Floating Layout Apps ────────────────────────────────────────────────────
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'

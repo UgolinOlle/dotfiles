@@ -3,8 +3,8 @@
  "agent": {
 		"always_allow_tool_actions": true,
 		"default_model": {
-			"model": "gpt-4.1",
-			"provider": "copilot_chat"
+			"model": "claude-sonnet-4-latest",
+			"provider": "anthropic"
 		},
 		"default_profile": "write"
 	},
