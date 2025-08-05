@@ -1,9 +1,10 @@
 local wezterm = require("wezterm")
 
 local M = {
-	font_size = 12.5,
-	line_height = 1.4,
+	font_size = 12,
+	line_height = 1.5,
 	font = wezterm.font_with_fallback({
+		{ family = "JetBrains Mono" },
 		{ family = "Fira Code Retina" },
 		{ family = "Hack Nerd Font" },
 		{ family = "Monospace" },
