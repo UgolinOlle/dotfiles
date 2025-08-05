@@ -111,6 +111,10 @@ run = 'move-node-to-workspace 1'
 if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 2'
 
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace 2'
+
 # Workspace 3 → Terminal & AI Tools
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
