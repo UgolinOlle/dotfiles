@@ -1,6 +1,10 @@
 {
-	"theme": "Vercel Light",
- "agent": {
+	"theme": {
+		"mode": "system",
+		"light": "Vercel Light",
+		"dark": "Vercel Dark"
+	},
+	"agent": {
 		"always_allow_tool_actions": true,
 		"default_model": {
 			"model": "gpt-4.1",
@@ -9,9 +13,15 @@
 		"default_profile": "write"
 	},
 
+	"autosave": "on_focus_change",
 	"auto_signature_help": true,
 	"buffer_font_size": 12,
 	"cursor_blink": true,
+
+	"toolbar": {
+		"breadcrumbs": false,
+		"quick_actions": false
+	},
 
 	"experimental.theme_overrides": {
 		"panel.focused_border": "#FF0000"
@@ -120,7 +130,8 @@
 	},
 
 	"project_panel": {
-		"indent_size": 12
+		"indent_size": 16,
+		"auto_fold_dirs": false
 	},
 
 	"relative_line_numbers": true,
@@ -128,13 +139,15 @@
 	"scrollbar": {
 		"show": "never"
 	},
+	"scroll_beyond_last_line": "off",
 
 	"soft_wrap": "editor_width",
 	"tab_size": 2,
 
 	"tab_bar": {
 		"show": true,
-		"show_nav_history_buttons": false
+		"show_nav_history_buttons": false,
+		"show_tab_bar_buttons": false
 	},
 
 	"tabs": {
@@ -149,6 +162,10 @@
 	},
 
 	"terminal": {
+		"toolbar": {
+			"breadcrumbs": false
+		},
+		"button": false,
 		"blinking": "on",
 		"cursor_shape": "bar",
 		"default_height": 1000,
