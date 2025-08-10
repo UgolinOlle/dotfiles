@@ -1,0 +1,40 @@
+# Default Python packages to install with every Python version
+# These packages will be automatically installed when mise installs a new Python version
+
+# Essential development tools
+pip-tools
+virtualenv
+pipx
+
+# Code quality tools
+black
+flake8
+isort
+mypy
+pylint
+
+# Testing tools
+pytest
+pytest-cov
+
+# Development tools
+ipython
+jupyter
+notebook
+
+# Web development
+requests
+fastapi
+uvicorn
+
+# Data science basics
+numpy
+pandas
+
+# Documentation
+sphinx
+mkdocs
+
+# Debugging and profiling
+pdb-clone
+line_profiler

@@ -1,6 +1,44 @@
+# --- MISE CONFIGURATION ------------------------------------------------------------------------------------------ #
+
 [tools]
+# Node.js - Use LTS for stability, can override per project
+node = "lts"
+
+# Bun - Keep latest
 bun = "latest"
-node = "20"
+
+# Python - Use latest stable
+python = "3.12"
+
+# Go - Use latest stable
+go = "latest"
+
+# Rust - Use stable channel
+rust = "stable"
+
+# Deno - Use latest
+deno = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node"]
+# Automatically install missing tools
+auto_install = true
+
+# Legacy version file support (.nvmrc, .python-version, etc.)
+legacy_version_file = true
+idiomatic_version_file_enable_tools = ["node", "python", "go", "rust"]
+
+# Use system node for global packages when available
+
+# Verbose output for debugging (set to true for troubleshooting)
+verbose = false
+
+# Experimental features
+experimental = true
+
+# Settings for specific tools
+[settings.node]
+compile = false
+
+# Environment variables
+[env]
+MISE_USE_TOML = "1"

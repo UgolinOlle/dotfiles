@@ -1,18 +1,34 @@
-# --- OPTIONS --------------------------------------------------------------------------------------------------- #
+# --- ENVIRONMENT VARIABLES ------------------------------------------------------------------------------------ #
 
-export ZSH_AUTOSUGGEST_USE_ASYNC=true
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_ALT_C_COMMAND='fd --type d'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+source ~/.config/zsh/env.zsh
 
+# --- ZSH OPTIONS ----------------------------------------------------------------------------------------------- #
+
+# History options
 setopt SHARE_HISTORY
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_FIND_NO_DUPS
 setopt EXTENDED_HISTORY
+setopt HIST_VERIFY
+setopt HIST_EXPIRE_DUPS_FIRST
 
+# Directory options
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+# Completion options
+setopt AUTO_MENU
+setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END
+
+# Correction options
+setopt CORRECT
+setopt CORRECT_ALL
+
+# Key bindings
 bindkey '^R' fzf-history-widget
 
 # --- SETUP --------------------------------------------------------------------------------------------------------- #
@@ -33,32 +49,27 @@ if command -v delta &>/dev/null; then
   git config --global delta.side-by-side true
 fi
 
-# --- PLUGINS ------------------------------------------------------------------------------------------------------- #
+# --- ZINIT PLUGIN MANAGER ------------------------------------------------------------------------------------- #
 
-plugins=(
-  git
-  brew
-  colorize
-  colored-man-pages
-)
+# Load Zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [[ ! -d "$ZINIT_HOME" ]]; then
+  mkdir -p "$(dirname "$ZINIT_HOME")"
+  git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME"
+fi
 
-# --- ZSH ----------------------------------------------------------------------------------------------------------- #
+source "${ZINIT_HOME}/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-source $ZSH/oh-my-zsh.sh
-
-autoload -Uz compinit
-compinit
-
-[[ -f "$ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && source "$ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-[[ -f "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-[[ -f "$ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh" ]] && source "$ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh"
-[[ -f "$ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ]] && source "$ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+# Load plugin configuration
+source ~/.config/zsh/plugins.zsh
 
 # --- ALIASES ------------------------------------------------------------------------------------------------------- #
 
 # --- Misc
 alias cls="clear"
-alias sz="source ~/.zshrc"
+alias sz="source ~/.zshrc && mise doctor"
 alias rm="trash"
 alias grep="grep --color=auto"
 alias cat="bat"
@@ -164,6 +175,10 @@ alias pr="pnpm run"
 # --- BUN
 alias b="bun"
 
+# --- Health & Maintenance
+alias zshtime="time zsh -i -c exit"
+alias zshbench="for i in {1..10}; do time zsh -i -c exit; done"
+
 # --- Disabled
 # alias p10kconfig="nvim ~/.p10k.zsh && source ~/.p10k.zsh"
 
@@ -247,6 +262,80 @@ function sha256() {
     printf "%s %s\n" "$1" "$2" | sha256sum --check
 }
 
+# --- Dotfiles management
+function dotfiles() {
+  local action="${1:-status}"
+  case "$action" in
+    "edit" | "e")
+      cd ~/.config && $EDITOR .
+      ;;
+    "status" | "s")
+      cd ~/.config && git status
+      ;;
+    "sync" | "pull")
+      cd ~/.config && git pull && echo "✅ Dotfiles synced"
+      ;;
+    "backup" | "push")
+      cd ~/.config && git add . && git commit -m "Update dotfiles $(date +%Y-%m-%d)" && git push
+      ;;
+    *)
+      echo "Usage: dotfiles [edit|status|sync|backup]"
+      ;;
+  esac
+}
+
+# --- Project navigation with fzf
+function proj() {
+  local dir
+  dir=$(fd --type d --max-depth 2 . ~/Developer | fzf --preview="eza -la {}" --height=40%) && cd "$dir"
+}
+
+# --- Smart mkdir and cd
+function mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+# --- Create project from template
+function newproj() {
+  local template="$1"
+  local project_name="$2"
+  
+  if [[ -z "$template" || -z "$project_name" ]]; then
+    echo "Usage: newproj <template> <project_name>"
+    echo "Available templates:"
+    ls ~/Developer/.templates/
+    return 1
+  fi
+  
+  local template_path="~/Developer/.templates/$template"
+  local project_path="~/Developer/$project_name"
+  
+  if [[ ! -d "$template_path" ]]; then
+    echo "❌ Template '$template' not found"
+    return 1
+  fi
+  
+  if [[ -d "$project_path" ]]; then
+    echo "❌ Project '$project_name' already exists"
+    return 1
+  fi
+  
+  echo "📁 Creating project '$project_name' from template '$template'..."
+  cp -r "$template_path" "$project_path"
+  cd "$project_path"
+  
+  # Replace PROJECT_NAME placeholder in files
+  if command -v sed &>/dev/null; then
+    find . -type f -name "*.json" -o -name "*.toml" -o -name "*.md" | \
+      xargs sed -i "" "s/PROJECT_NAME/$project_name/g" 2>/dev/null || true
+  fi
+  
+  # Initialize git repository
+  git init
+  echo "✅ Project '$project_name' created successfully!"
+  echo "📍 Location: $(pwd)"
+}
+
 # --- COMPLETIONS ---------------------------------------------------------------------------------------------------- #
 
 # --- Global completion
@@ -269,3 +358,17 @@ eval "$(starship init zsh)"
 export PATH="$PATH:/Users/uolle/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk

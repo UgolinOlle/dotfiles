@@ -1,0 +1,36 @@
+# Default npm packages to install with every Node.js version
+# These packages will be automatically installed when mise installs a new Node.js version
+
+# Essential development tools
+@types/node
+typescript
+tsx
+nodemon
+
+# Code quality tools
+eslint
+prettier
+@typescript-eslint/parser
+@typescript-eslint/eslint-plugin
+
+# Build tools
+vite
+rollup
+esbuild
+
+# Testing tools
+vitest
+@vitest/ui
+
+# Utility libraries
+lodash
+dayjs
+axios
+
+# Development servers
+live-server
+http-server
+
+# Package management
+npm-check-updates
+depcheck

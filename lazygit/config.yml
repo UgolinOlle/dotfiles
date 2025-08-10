@@ -1,0 +1,160 @@
+# --- LAZYGIT CONFIGURATION --------------------------------------------------------------------------------------- #
+
+# UI Configuration
+gui:
+  # Theme
+  theme:
+    lightTheme: false
+    activeBorderColor:
+      - "#a9b1d6"
+      - bold
+    inactiveBorderColor:
+      - "#27a1b9"
+    optionsTextColor:
+      - "#7dcfff"
+    selectedLineBgColor:
+      - "#2d3f76"
+    selectedRangeBgColor:
+      - "#2d3f76"
+    cherryPickedCommitBgColor:
+      - "#494d64"
+    cherryPickedCommitFgColor:
+      - "#7dcfff"
+    unstagedChangesColor:
+      - "#db4b4b"
+    defaultFgColor:
+      - "#c0caf5"
+
+  # Window sizing
+  windowSize: "normal"
+  sidePanelWidth: 0.3333
+  expandFocusedSidePanel: false
+  mainPanelSplitMode: "flexible"
+  language: "en"
+  timeFormat: "02 Jan 06"
+  shortTimeFormat: "3:04PM"
+
+  # Commit message
+  commitLength: 50
+  skipHookPrefix: "WIP"
+  skipRewordInEditorWarning: false
+  closeConfirmPrompt: true
+  quitOnTopLevelReturn: false
+  scrollHeight: 2
+  scrollPastBottom: true
+  mouseEvents: true
+
+# Git Configuration  
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+    useConfig: false
+    externalDiffCommand: ""
+
+  commit:
+    signOff: false
+    verbose: true
+    autoWrapCommitMessage: true
+    autoWrapWidth: 72
+
+  merging:
+    manualCommit: false
+    args: ""
+
+  log:
+    order: "topo-order"
+    showGraph: "when-maximised"
+
+  skipHookPrefix: "WIP"
+  autoFetch: true
+  autoRefresh: true
+  fetchAll: true
+  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
+  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
+  overrideGpg: false
+
+# Update Configuration
+update:
+  method: prompt
+  days: 14
+
+# Refresher
+refresher:
+  refreshInterval: 10
+  fetchInterval: 60
+
+# Confirmation prompts
+confirmOnQuit: false
+
+# Key bindings (customize as needed)
+keybinding:
+  universal:
+    quit: "q"
+    quit-alt1: "<c-c>"
+    return: "<esc>"
+    quitWithoutChangingDirectory: "Q"
+    togglePanel: "<tab>"
+    prevItem: "<up>"
+    nextItem: "<down>"
+    prevItem-alt: "k"
+    nextItem-alt: "j"
+    prevPage: ","
+    nextPage: "."
+    gotoTop: "<"
+    gotoBottom: ">"
+    scrollLeft: "H"
+    scrollRight: "L"
+    prevBlock: "<left>"
+    nextBlock: "<right>"
+    prevBlock-alt: "h"
+    nextBlock-alt: "l"
+    jumpToBlock: ["1", "2", "3", "4", "5"]
+    nextMatch: "n"
+    prevMatch: "N"
+    optionMenu: "x"
+    optionMenu-alt1: "?"
+    select: "<space>"
+    goInto: "<enter>"
+    openRecentRepos: "<c-r>"
+    confirm: "<enter>"
+    confirm-alt1: "y"
+    remove: "d"
+    new: "n"
+    edit: "e"
+    openFile: "o"
+    scrollUpMain: "<pgup>"
+    scrollDownMain: "<pgdown>"
+    scrollUpMain-alt1: "K"
+    scrollDownMain-alt1: "J"
+    scrollUpMain-alt2: "<c-u>"
+    scrollDownMain-alt2: "<c-d>"
+    executeCustomCommand: ":"
+    createRebaseOptionsMenu: "m"
+    pushFiles: "P"
+    pullFiles: "p"
+    refresh: "R"
+    createPatchOptionsMenu: "<c-p>"
+    nextTab: "]"
+    prevTab: "["
+    nextScreenMode: "+"
+    prevScreenMode: "_"
+    undo: "z"
+    redo: "<c-z>"
+    filteringMenu: "<c-s>"
+    diffingMenu: "W"
+    diffingMenu-alt: "<c-e>"
+    copyToClipboard: "<c-o>"
+    submitEditorText: "<enter>"
+    appendNewline: "<a-enter>"
+    extrasMenu: "@"
+    toggleWhitespaceInDiffView: "<c-w>"
+
+# Custom commands
+customCommands:
+  - key: "C"
+    command: "git cz"
+    description: "commit with commitizen"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(mise:*)",
+      "Bash(echo $TERM)",
+      "Bash(source:*)",
+      "Bash(echo:*)",
+      "Bash(infocmp:*)",
+      "Bash(clear)",
+      "Bash(exec zsh)"
+    ],
+    "deny": []
+  }
+}
