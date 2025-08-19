@@ -73,7 +73,7 @@ alias sz="source ~/.zshrc && mise doctor"
 alias rm="trash"
 alias grep="grep --color=auto"
 alias cat="bat"
-alias sshreload="eval \$(ssh-agent -s) && ssh-add -K ~/.ssh/id_rsa"
+alias sshreload="eval \$(ssh-agent -s) && ssh-add -K ~/.ssh/id_ed25519"
 alias ports="lsof -i -P -n | grep LISTEN"
 alias x="exit"
 alias tp="taproom"
@@ -91,7 +91,7 @@ alias clean:docker="docker system prune -af --volumes"
 alias dv="cd ~/Developer"
 alias dd="cd ~/Documents"
 alias dw="cd ~/Downloads"
-alias wh="cd ~/Developer/whoa-studio/"
+alias wh="cd ~/Developer/whoa-projects/"
 alias conf="cd ~/.config"
 alias h="cd ~"
 alias ..="cd .."
@@ -353,11 +353,6 @@ eval "$(rbenv init -)"
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/uolle/.lmstudio/bin"
-# End of LM Studio CLI section
-
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then

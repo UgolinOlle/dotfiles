@@ -56,3 +56,4 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 # --- Path Management
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$XDG_DATA_HOME/zinit/polaris/bin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"

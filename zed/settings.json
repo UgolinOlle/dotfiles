@@ -84,6 +84,7 @@
 			"soft_wrap": "preferred_line_length"
 		},
 		"PHP": {
+			"language_servers": ["intelephense", "!phpactor", "..."],
 			"inlay_hints": {
 				"enabled": true
 			}
@@ -130,6 +131,7 @@
 	},
 
 	"project_panel": {
+		"hide_gitignore": true,
 		"indent_size": 16,
 		"auto_fold_dirs": false
 	},
@@ -175,7 +177,6 @@
 	},
 
 	"title_bar": {
-		"show": true,
 		"show_branch_icon": true,
 		"show_branch_name": true,
 		"show_onboarding_banner": true,

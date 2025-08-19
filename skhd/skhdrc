@@ -17,7 +17,7 @@ cmd + alt - w : open -a "WhatsApp"
 cmd + alt - a : open -a "Activity Monitor"
 cmd + alt - l : open -a "Linear"
 
-alt - return : open -a "Wezterm"
+alt - return : open -a "Ghostty"
 alt - f : open ~ 
 
 # --- Reload config files
