@@ -115,18 +115,25 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 2'
 
-# Workspace 3 → Terminal & AI Tools
+# Workspace 3 → Terminal
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace 3'
+run = [
+  'layout floating',
+  'move-node-to-workspace 3'
+]
 
 # Workspace 4 → API Testing & Development Tools
 [[on-window-detected]]
 if.app-id = 'io.httpie.desktop'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
 run = 'move-node-to-workspace 4'
 
 # Workspace 5 → Database Management
@@ -190,10 +197,6 @@ run = 'move-node-to-workspace 0'
 # ─── Floating Layout Apps ────────────────────────────────────────────────────
 
 [[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = 'layout floating'
-
-[[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
 run = 'layout floating'
 
@@ -207,8 +210,4 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.timpler.screenstudio'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
 run = 'layout floating'
