@@ -162,25 +162,11 @@ alias nl="npm list"
 alias nr="npm run"
 alias nc="rm -rf node_modules && npm cache clean --force"
 alias dev="npm run dev"
-alias build="npm run build"
-alias test="npm run test"
-alias lint="npm run lint"
-
-# --- PNPM
-alias p="pnpm"
-alias pi="pnpm install"
-alias pu="pnpm update"
-alias pr="pnpm run"
-
-# --- BUN
-alias b="bun"
 
 # --- Health & Maintenance
 alias zshtime="time zsh -i -c exit"
 alias zshbench="for i in {1..10}; do time zsh -i -c exit; done"
 
-# --- Disabled
-# alias p10kconfig="nvim ~/.p10k.zsh && source ~/.p10k.zsh"
 
 # --- FUNCTIONS ----------------------------------------------------------------------------------------------------- #
 

@@ -10,7 +10,9 @@
       "Bash(echo:*)",
       "Bash(infocmp:*)",
       "Bash(clear)",
-      "Bash(exec zsh)"
+      "Bash(exec zsh)",
+      "WebFetch(domain:vercel.com)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }

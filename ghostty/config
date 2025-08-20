@@ -35,3 +35,28 @@ quit-after-last-window-closed  = true
 scrollback-limit               = 4200
 shell-integration              = fish
 shell-integration-features     = cursor,sudo,title
+
+# Vercel-inspired theme colors
+background                   = 000000
+foreground                   = fafbfc
+cursor-color                 = fafbfc
+selection-background         = 333333
+selection-foreground         = fafbfc
+
+# Terminal color palette (Vercel/Geist inspired)
+palette = 0=#000000
+palette = 1=#ff6b6b
+palette = 2=#7ce0c3
+palette = 3=#ffd93d
+palette = 4=#54a6f8
+palette = 5=#e43ade
+palette = 6=#7ce0c3
+palette = 7=#fafbfc
+palette = 8=#888888
+palette = 9=#ff6b6b
+palette = 10=#7ce0c3
+palette = 11=#ffd93d
+palette = 12=#54a6f8
+palette = 13=#e43ade
+palette = 14=#7ce0c3
+palette = 15=#fafbfc

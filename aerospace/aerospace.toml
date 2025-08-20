@@ -121,11 +121,7 @@ if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.anthropic.claudefordesktop'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'com.conductor.app'
+if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 3'
 
 # Workspace 4 → API Testing & Development Tools
@@ -211,4 +207,8 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.timpler.screenstudio'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
 run = 'layout floating'
