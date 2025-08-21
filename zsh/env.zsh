@@ -27,6 +27,7 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_THEME="vercel"
 
 # --- FZF Configuration
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -57,3 +58,4 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$XDG_DATA_HOME/zinit/polaris/bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+export PATH="$HOME/opt/homebrew/bin/docker:$PATH"

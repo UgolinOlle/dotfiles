@@ -23,6 +23,7 @@ zinit wait lucid for \
   OMZP::colored-man-pages \
   OMZP::colorize
 
+
 # --- Advanced Tools
 zinit wait"1" lucid for \
   light-mode  zsh-users/zsh-history-substring-search

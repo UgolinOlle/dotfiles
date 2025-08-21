@@ -12,8 +12,12 @@
       "Bash(clear)",
       "Bash(exec zsh)",
       "WebFetch(domain:vercel.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(curl:*)"
     ],
-    "deny": []
+    "deny": [],
+    "additionalDirectories": [
+      "/opt/homebrew"
+    ]
   }
 }
