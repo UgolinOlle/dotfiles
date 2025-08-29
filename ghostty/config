@@ -24,6 +24,7 @@ background-opacity             = 0.8
 background-blur                = true
 window-padding-x               = 20
 window-padding-y               = 20
+macos-titlebar-style           = "transparent"
 
 # Other
 clipboard-paste-protection     = true
@@ -31,6 +32,7 @@ clipboard-trim-trailing-spaces = true
 copy-on-select                 = true
 macos-auto-secure-input        = true
 macos-secure-input-indication  = true
+macos-option-as-alt            = left
 quit-after-last-window-closed  = true
 scrollback-limit               = 4200
 shell-integration              = fish
@@ -60,3 +62,6 @@ palette = 12=#54a6f8
 palette = 13=#e43ade
 palette = 14=#7ce0c3
 palette = 15=#fafbfc
+
+keybind = alt+left=unbind
+keybind = alt+right=unbind
