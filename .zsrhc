@@ -309,3 +309,5 @@ eval "$(rbenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+alias zj="zellij --layout ~/.config/zellij/layouts/dev.kdl"
+alias zjn="zellij --layout ~/.config/zellij/layouts/nvim.kdl"
