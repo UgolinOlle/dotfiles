@@ -7,7 +7,6 @@ layout {
             pane size="75%" {
                 name "nvim"
                 command "nvim"
-                args "."
             }
             pane size="25%" split_direction="horizontal" {
                 pane size="50%" {

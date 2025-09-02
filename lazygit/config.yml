@@ -1,6 +1,4 @@
-# --- LAZYGIT CONFIGURATION --------------------------------------------------------------------------------------- #
-
-# UI Configuration
+---
 gui:
   # Theme
   theme:
@@ -24,18 +22,14 @@ gui:
       - "#db4b4b"
     defaultFgColor:
       - "#c0caf5"
-
   # Window sizing
-  windowSize: "normal"
+  screenMode: "normal"
   sidePanelWidth: 0.3333
   expandFocusedSidePanel: false
   mainPanelSplitMode: "flexible"
   language: "en"
   timeFormat: "02 Jan 06"
   shortTimeFormat: "3:04PM"
-
-  # Commit message
-  commitLength: 50
   skipHookPrefix: "WIP"
   skipRewordInEditorWarning: false
   closeConfirmPrompt: true
@@ -43,50 +37,42 @@ gui:
   scrollHeight: 2
   scrollPastBottom: true
   mouseEvents: true
-
-# Git Configuration  
+# Git Configuration
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
     useConfig: false
     externalDiffCommand: ""
-
   commit:
     signOff: false
     verbose: true
     autoWrapCommitMessage: true
     autoWrapWidth: 72
-
   merging:
     manualCommit: false
     args: ""
-
   log:
     order: "topo-order"
     showGraph: "when-maximised"
-
   skipHookPrefix: "WIP"
   autoFetch: true
   autoRefresh: true
   fetchAll: true
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
-  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
   overrideGpg: false
-
+  allBranchesLogCmds:
+    - git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
 # Update Configuration
 update:
   method: prompt
   days: 14
-
 # Refresher
 refresher:
   refreshInterval: 10
   fetchInterval: 60
-
 # Confirmation prompts
 confirmOnQuit: false
-
 # Key bindings (customize as needed)
 keybinding:
   universal:
@@ -129,7 +115,7 @@ keybinding:
     scrollDownMain-alt1: "J"
     scrollUpMain-alt2: "<c-u>"
     scrollDownMain-alt2: "<c-d>"
-    executeCustomCommand: ":"
+    executeShellCommand: ":"
     createRebaseOptionsMenu: "m"
     pushFiles: "P"
     pullFiles: "p"
@@ -149,7 +135,6 @@ keybinding:
     appendNewline: "<a-enter>"
     extrasMenu: "@"
     toggleWhitespaceInDiffView: "<c-w>"
-
 # Custom commands
 customCommands:
   - key: "C"
@@ -157,4 +142,4 @@ customCommands:
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
-    subprocess: true
+    output: terminal
