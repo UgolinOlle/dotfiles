@@ -269,20 +269,20 @@ web_client {
 }
  
 // Use a simplified UI without special fonts (arrow glyphs)
-theme "vercel-dark"
+theme "vercel-light"
 
 themes {
     vercel-light {
-        fg "#ffffff"
+        fg "#0070f3"
         bg "#000000"
-        black "#000000"
+        black "#ffffff"
         red "#e60026"
         green "#00a96e"
         yellow "#ff6f00"
         blue "#0070f3"
         magenta "#9333ea"
         cyan "#00b2d6"
-        white "#ffffff"
+        white "#000000"
         orange "#ff6f00"
     }
     
@@ -290,14 +290,14 @@ themes {
         fg "#ffffff"
         bg "#000000"
         black "#000000"
-        red "#ff6b6b"
-        green "#51cf66"
-        yellow "#ffd43b"
-        blue "#339af0"
-        magenta "#da77f2"
-        cyan "#22b8cf"
+        red "#ff5555"
+        green "#22d96f"
+        yellow "#ffd600"
+        blue "#0070f3"
+        magenta "#f81ce5"
+        cyan "#50e3c2"
         white "#ffffff"
-        orange "#ff922b"
+        orange "#ff8800"
     }
 }
  
