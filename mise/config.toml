@@ -2,7 +2,7 @@
 
 [tools]
 # Node.js - Use LTS for stability, can override per project
-node = "lts"
+node = "22"
 
 # Bun - Keep latest
 bun = "latest"

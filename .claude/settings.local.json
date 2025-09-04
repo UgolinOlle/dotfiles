@@ -16,11 +16,13 @@
       "Bash(curl:*)",
       "Bash(brew install:*)",
       "Bash(/opt/homebrew/opt/fzf/install:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(nvim:*)"
     ],
     "deny": [],
     "additionalDirectories": [
-      "/opt/homebrew"
+      "/opt/homebrew",
+      "/Users/uolle/.local/share/nvim"
     ]
   }
 }
