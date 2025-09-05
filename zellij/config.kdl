@@ -141,7 +141,7 @@ keybinds clear-defaults=true {
         bind "Alt =" { Resize "Increase"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
-        bind "Alt f" { ToggleFloatingPanes; }
+        bind "Ctrl f" { ToggleFloatingPanes; }
         bind "Ctrl g" { SwitchToMode "locked"; }
         // Aerospace uses Alt+hjkl for window focus, use Ctrl+Alt for zellij pane focus
         bind "Ctrl Alt h" { MoveFocusOrTab "left"; }
