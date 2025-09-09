@@ -28,7 +28,7 @@ macos-titlebar-style           = "transparent"
 window-theme                   = "auto"
 
 # Other
-initial-command = zellij
+initial-command = /opt/homebrew/bin/zellij
 clipboard-paste-protection     = true
 clipboard-trim-trailing-spaces = true
 copy-on-select                 = true
