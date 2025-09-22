@@ -84,10 +84,10 @@ alias sz="source ~/.zshrc && mise doctor"
 alias rm="trash"
 alias grep="grep --color=auto"
 alias cat="bat"
-alias sshreload="eval \$(ssh-agent -s) && ssh-add -K ~/.ssh/id_ed25519"
+alias rssh="eval \$(ssh-agent -s) && ssh-add -K ~/.ssh/id_ed25519"
 alias ports="lsof -i -P -n | grep LISTEN"
 alias x="exit"
-alias tp="taproom"
+alias kssh="pkill -f 'ssh.*github' || launchctl stop com.openssh.ssh-agent || launchctl start com.openssh.ssh-agent"
 
 if command -v mise &>/dev/null; then
   eval "$(mise activate zsh)"
@@ -156,15 +156,6 @@ alias vi="nvim"
 alias nz="nv ~/.zshrc"
 alias ns="sudo nvim"
 alias nenv="nv .env"
-
-# --- PHP Artisan (Laravel)
-alias pa="php artisan"
-alias pas="php artisan serve"
-alias pam="php artisan migrate"
-alias par="php artisan route:list"
-alias pac="php artisan cache:clear"
-alias pacv="php artisan config:clear && php artisan view:clear"
-alias pfresh="php artisan migrate:fresh --seed"
 
 # --- NPM
 alias ni="npm install"
@@ -259,28 +250,6 @@ function sha256() {
     printf "%s %s\n" "$1" "$2" | sha256sum --check
 }
 
-# --- Dotfiles management
-function dotfiles() {
-  local action="${1:-status}"
-  case "$action" in
-    "edit" | "e")
-      cd ~/.config && $EDITOR .
-      ;;
-    "status" | "s")
-      cd ~/.config && git status
-      ;;
-    "sync" | "pull")
-      cd ~/.config && git pull && echo "✅ Dotfiles synced"
-      ;;
-    "backup" | "push")
-      cd ~/.config && git add . && git commit -m "Update dotfiles $(date +%Y-%m-%d)" && git push
-      ;;
-    *)
-      echo "Usage: dotfiles [edit|status|sync|backup]"
-      ;;
-  esac
-}
-
 # --- Project navigation with fzf
 function proj() {
   local dir
@@ -296,11 +265,6 @@ function mkcd() {
 
 # --- Global completion
 fpath=(~/.zsh/completions $fpath)
-
-# --- Ngrok completion
-if command -v ngrok &>/dev/null; then
-  eval "$(ngrok completion)"
-fi
 
 # --- MISCELLANEOUS -------------------------------------------------------------------------------------------------- #
 
