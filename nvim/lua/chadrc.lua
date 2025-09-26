@@ -1,4 +1,4 @@
----@type ChadrcConfig
+---@class ChadrcConfig
 local M = {}
 
 -- Function to detect macOS appearance
@@ -65,9 +65,14 @@ M.disabled = {
 
 M.lspoveride = {
   n = {
-    ["gd"] = { "<cmd> Telescope <CR>", "definitions" },
-    ["gr"] = { "<cmd> Telescope <CR>", "references" },
+    ["gd"] = { "<cmd>Telescope <CR>", "definitions" },
+    ["gr"] = { "<cmd>Telescope <CR>", "references" },
   },
+}
+
+M.nvdash = {
+  load_on_startup = true,
+  buttons = require "configs.nvdash",
 }
 
 vim.opt.guifont = "JetBrains Mono:h14"

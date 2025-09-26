@@ -50,9 +50,6 @@ return {
     end,
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -74,32 +71,6 @@ return {
   },
 
   { import = "plugins.telescope" },
-
-  -- GitHub Copilot
-  {
-    "github/copilot.vim",
-    config = function()
-      vim.g.copilot_no_tab_map = true
-      vim.api.nvim_set_keymap(
-        "i",
-        "<C-J>",
-        'copilot#Accept("<CR>")',
-        { expr = true, silent = true }
-      )
-      vim.g.copilot_filetypes = {
-        ["*"] = false,
-        ["javascript"] = true,
-        ["typescript"] = true,
-        ["lua"] = true,
-        ["rust"] = true,
-        ["c"] = true,
-        ["c#"] = true,
-        ["c++"] = true,
-        ["go"] = true,
-        ["python"] = true,
-      }
-    end,
-  },
 
   -- Git integration
   {
@@ -297,7 +268,7 @@ return {
         end,
       },
 
-{
+      {
         "hrsh7th/cmp-cmdline",
         event = "CmdlineEnter",
         config = function()
@@ -310,7 +281,10 @@ return {
 
           cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
+            sources = cmp.config.sources(
+              { { name = "path" } },
+              { { name = "cmdline" } }
+            ),
             matching = { disallow_symbol_nonprefix_matching = false },
           })
         end,
