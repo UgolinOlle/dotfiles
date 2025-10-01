@@ -182,6 +182,10 @@ if.app-id = 'com.apple.ActivityMonitor'
 run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
+if.app-id = 'com.nordvpn.macos'
+run = 'move-node-to-workspace 0'
+
+[[on-window-detected]]
 if.app-id = 'com.macpaw.CleanMyMac5'
 run = 'move-node-to-workspace 0'
 
