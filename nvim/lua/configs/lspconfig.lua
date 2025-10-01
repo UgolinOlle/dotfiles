@@ -14,6 +14,7 @@ local servers = {
   "eslint",
   "bashls",
   "biome",
+  "prettier",
 }
 
 vim.lsp.enable(servers)
