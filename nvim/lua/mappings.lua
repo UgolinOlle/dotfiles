@@ -15,6 +15,8 @@ map(
   "<cmd>Telescope find_files<CR>",
   { desc = "Find Files (Telescope)" }
 )
+map("n", "sv", "<CMD>vsplit<ENTER>", { desc = "Split screen vertically" })
+map("n", "ss", "<CMD>split<ENTER>", { desc = "Split screen horizontally" })
 
 -- Git mappings
 map(
