@@ -1,8 +1,8 @@
-font-family = Symbols Nerd Font Mono
-font-family = PragmataPro Liga
-font-family-bold = PragmataPro Liga
-font-family-italic = PragmataPro Liga
-font-family-bold-italic = PragmataPro Liga
+font-family = "FiraCode Nerd Font Mono Ret"
+font-family = "Symbols Nerd Font Mono"
+font-family-bold = "FiraCode Nerd Font Mono Bold"
+font-family-italic = "FiraCode Nerd Font Mono Light"
+font-family-bold-italic = "FiraCode Nerd Font Mono Ret"
 
 font-feature = calt
 font-feature = liga

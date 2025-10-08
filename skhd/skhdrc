@@ -12,7 +12,8 @@ cmd + alt - f : open -a "Figma"
 cmd + alt - b : open -a "Beeper Desktop"
 cmd + alt - a : open -a "Activity Monitor"
 cmd + alt - k : open -a "Docker"
-cmd + alt - v : open -a "NordVPN"
+cmd + alt - p : open -a "NordVPN"
+cmd + alt - v : open -a "Visual Studio Code"
 
 alt - return : open -a "Ghostty"
 alt - f : open ~ 

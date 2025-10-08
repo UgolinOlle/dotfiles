@@ -1,6 +1,7 @@
 return {
   defaults = { lazy = true },
   change_detection = {
+    enabled = true,
     notify = false,
   },
   install = { colorscheme = { "nvchad" } },
