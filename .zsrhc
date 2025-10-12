@@ -90,6 +90,7 @@ alias ports="lsof -i -P -n | grep LISTEN"
 alias x="exit"
 alias kssh="pkill -f 'ssh.*github' || launchctl stop com.openssh.ssh-agent || launchctl start com.openssh.ssh-agent"
 
+
 if command -v mise &>/dev/null; then
   eval "$(mise activate zsh)"
 fi

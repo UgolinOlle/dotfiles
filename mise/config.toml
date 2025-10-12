@@ -10,9 +10,6 @@ bun = "latest"
 # Python - Use latest stable
 python = "3.12"
 
-# Go - Use latest stable
-go = "latest"
-
 # Rust - Use stable channel
 rust = "stable"
 

@@ -115,33 +115,25 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 2'
 
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run = [
-  'move-node-to-workspace 2'
-]
-
 # Zellij integration - ensure zellij terminals stay in workspace 2
 [[on-window-detected]]
 if.window-title-regex-substring = '^Zellij'
 run = 'move-node-to-workspace 3'
 
-# Workspace 3 → API Testing & Development Tools
+# Workspace 3 → Development Tools
 [[on-window-detected]]
-if.app-id = 'io.httpie.desktop'
-run = 'move-node-to-workspace 3'
+if.app-id = 'com.mitchellh.ghostty'
+run = [
+  'move-node-to-workspace 3'
+]
 
-[[on-window-detected]]
-if.app-id = 'com.electron.dockerdesktop'
-run = 'move-node-to-workspace 3'
-
-# Workspace 4 → Database Management & Design
+# Workspace 4 → Database Management & API Testing
 [[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'com.figma.Desktop'
+if.app-id = 'io.httpie.desktop'
 run = 'move-node-to-workspace 4'
 
 # Workspace 5 → Documentation
@@ -149,9 +141,9 @@ run = 'move-node-to-workspace 4'
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace 5'
 
-# Workspace 6 → Project Management (Secondary Monitor)
+# Workspace 6 → Design
 [[on-window-detected]]
-if.app-id = 'com.linear'
+if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace 6'
 
 # Workspace 7 → Calendar & Email (Secondary Monitor)
