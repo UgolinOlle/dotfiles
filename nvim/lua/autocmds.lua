@@ -31,23 +31,30 @@ autocmd("User", {
   desc = "Enable Line Number in Telescope Preview",
 })
 
-autocmd({ "FocusLost", "BufLeave", "BufWinLeave", "InsertLeave" }, {
-  nested = true, -- for format on save
-  callback = function()
-    if vim.bo.filetype ~= "" and vim.bo.buftype == "" then
-      vim.cmd "silent! w"
-    end
-  end,
-  group = general,
-  desc = "Auto Save",
-})
-
 autocmd("FocusGained", {
   callback = function()
     vim.cmd "checktime"
+
+    -- Check and update theme based on macOS appearance
+    local handle = io.popen "defaults read -g AppleInterfaceStyle 2>/dev/null"
+    if handle then
+      local result = handle:read "*a"
+      handle:close()
+      result = result:gsub("%s+", "")
+
+      local appearance = result == "Dark" and "dark" or "light"
+      local new_theme = appearance == "dark" and "github_dark" or "github_light"
+
+      -- Only update if theme has changed
+      local current_theme = vim.g.nvchad_theme
+      if current_theme ~= new_theme then
+        require("nvchad.utils").replace_word('theme = "' .. current_theme .. '"', 'theme = "' .. new_theme .. '"')
+        vim.cmd("Nvchad theme " .. new_theme)
+      end
+    end
   end,
   group = general,
-  desc = "Update file when there are changes",
+  desc = "Update file when there are changes and sync theme with macOS appearance",
 })
 
 autocmd("VimResized", {
@@ -56,6 +63,19 @@ autocmd("VimResized", {
   end,
   group = general,
   desc = "Equalize Splits",
+})
+
+-- Disable line numbers for specific filetypes
+local no_numbers = augroup("NoLineNumbers", { clear = true })
+
+autocmd("FileType", {
+  pattern = { "nvdash", "lazy", "mason" },
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  end,
+  group = no_numbers,
+  desc = "Disable line numbers for dashboard, lazy, and mason",
 })
 
 -- Git settings

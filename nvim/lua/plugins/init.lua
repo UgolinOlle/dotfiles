@@ -5,6 +5,10 @@ return {
     opts = require "configs.conform",
   },
 
+  {
+    "OXY2DEV/markview.nvim"
+  },
+
   -- Mason for automatic LSP server installation
   {
     "williamboman/mason.nvim",

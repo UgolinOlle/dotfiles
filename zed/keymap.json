@@ -7,6 +7,12 @@
 		}
 	},
 	{
+		"context": "Terminal",
+		"bindings": {
+			"cmd-t": "workspace::NewTerminal"
+		}
+	},
+	{
 		"context": "Editor && !menu",
 		"bindings": {
 			"cmd-shift-l": "editor::Format",
@@ -24,6 +30,8 @@
 	{
 		"context": "Editor && vim_mode == normal && !VimWaiting && !menu",
 		"bindings": {
+			"cmd-t": "terminal_panel::ToggleFocus",
+
 			"ctrl-h": "workspace::ActivatePaneLeft",
 			"ctrl-l": "workspace::ActivatePaneRight",
 			"ctrl-k": "workspace::ActivatePaneUp",
