@@ -41,30 +41,6 @@ autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
   desc = "Update file when there are changes",
 })
 
-autocmd("VimEnter", {
-  callback = function()
-    -- Check and update theme based on macOS appearance
-    local handle = io.popen "defaults read -g AppleInterfaceStyle 2>/dev/null"
-    if handle then
-      local result = handle:read "*a"
-      handle:close()
-      result = result:gsub("%s+", "")
-
-      local appearance = result == "Dark" and "dark" or "light"
-      local new_theme = appearance == "dark" and "github_dark" or "github_light"
-
-      -- Only update if theme has changed
-      local current_theme = vim.g.nvchad_theme
-      if current_theme ~= new_theme then
-        require("nvchad.utils").replace_word('theme = "' .. current_theme .. '"', 'theme = "' .. new_theme .. '"')
-        vim.cmd("Nvchad theme " .. new_theme)
-      end
-    end
-  end,
-  group = general,
-  desc = "Sync theme with macOS appearance on startup",
-})
-
 autocmd("VimResized", {
   callback = function()
     vim.cmd "wincmd ="

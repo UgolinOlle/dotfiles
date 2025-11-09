@@ -6,7 +6,7 @@ return {
   },
 
   {
-    "OXY2DEV/markview.nvim"
+    "OXY2DEV/markview.nvim",
   },
 
   -- Mason for automatic LSP server installation
@@ -307,6 +307,41 @@ return {
     },
     opts = function()
       return require "nvchad.configs.cmp"
+    end,
+  },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      {
+        "rcarriga/nvim-notify",
+        opts = {
+          top_down = false,
+        },
+        init = function()
+          local banned_messages = {
+            "No information available",
+          }
+          vim.notify = function(msg, ...)
+            for _, banned in ipairs(banned_messages) do
+              if msg == banned then
+                return
+              end
+            end
+            return require "notify"(msg, ...)
+          end
+        end,
+      },
+    },
+    config = function()
+      require "configs.noice"
+      ---@diagnostic disable-next-line: different-requires
+      vim.lsp.handlers["textDocument/hover"] = require("noice").hover
+      ---@diagnostic disable-next-line: different-requires
+      vim.lsp.handlers["textDocument/signatureHelp"] =
+        require("noice").signature
     end,
   },
 }

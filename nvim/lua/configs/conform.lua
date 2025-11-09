@@ -2,28 +2,27 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
 
-    javascript = { "prettier", "biome" },
-    javascriptreact = { "prettier", "biome" },
-    typescript = { "prettier", "biome" },
-    typescriptreact = { "prettier", "biome" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
 
-    css = { "biome" },
-    html = { "biome" },
-    json = { "prettier", "biome" },
-    jsonc = { "prettier", "biome" },
-    -- css = { "biome" },
-    -- html = { "prettier" },
-    -- typescript = { "biome" },
-    -- javascript = { "biome" },
-    -- javascriptreact = { "biome" },
-    -- typescriptreact = { "biome" },
-    -- json = { "biome" },
-    -- jsonc = { "biome" },
-    -- yaml = { "prettier" },
-    -- markdown = { "prettier" },
-    -- sh = { "shfmt" },
-    -- bash = { "shfmt" },
-    -- zsh = { "shfmt" },
+    javascriptreact = { "prettier" },
+    typescriptreact = { "prettier" },
+
+    json = { "prettier" },
+    jsonc = { "prettier" },
+
+    css = { "prettier" },
+    html = { "prettier" },
+
+    markdown = { "prettier" },
+    sql = { "sqlfmt" },
+
+    ["yaml"] = { "prettier" },
+    ["markdown.mdx"] = { "prettier" },
+
+    sh = { "shfmt" },
+    bash = { "shfmt" },
+    zsh = { "shfmt" },
   },
 
   format_on_save = {

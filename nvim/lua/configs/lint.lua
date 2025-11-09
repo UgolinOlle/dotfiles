@@ -1,4 +1,4 @@
-local lint = require("lint")
+local lint = require "lint"
 
 -- Configure linters by filetype
 lint.linters_by_ft = {

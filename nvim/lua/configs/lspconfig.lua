@@ -18,22 +18,23 @@ local servers = {
 }
 
 vim.lsp.enable(servers)
-vim.lsp.buf.signature_help = function(config)
-  config = config or {}
-  config.border = "rounded"
-  config.title = ""
-  return signature_help(config)
-end
+
+-- vim.lsp.buf.signature_help = function(config)
+--   config = config or {}
+--   config.border = "rounded"
+--   config.title = ""
+--   return signature_help(config)
+-- end
 
 -- Sets border for diagnostics and opens them on jump in a floating window
-vim.diagnostic.config {
-  jump = {
-    float = true,
-  },
-  float = {
-    border = "rounded",
-  },
-}
+-- vim.diagnostic.config {
+--   jump = {
+--     float = true,
+--   },
+--   float = {
+--     border = "rounded",
+--   },
+-- }
 
 -- Configure autoimport keymaps
 map(
