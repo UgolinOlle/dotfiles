@@ -82,6 +82,7 @@ source ~/.config/zsh/plugins.zsh
 alias cls="clear"
 alias sz="source ~/.zshrc && mise doctor"
 alias rm="trash"
+alias clean="clean_home"
 alias grep="grep --color=auto"
 alias cat="bat"
 alias rssh="eval \$(ssh-agent -s) && ssh-add ~/.ssh/id_ed25519"
@@ -112,8 +113,8 @@ alias f="nvim \$(fzf --layout=reverse --border --info=inline --margin=4,20 --pad
 alias fd="cd \$(fzf --layout=reverse --border --info=inline --margin=4,20 --padding=1 --preview='batcat --color=always --style=plain {}' --style=full)"
 
 # --- List
-alias lt='eza --tree --level=2 --long --icons --git'
-alias lta='lt -a'
+alias lr='eza --tree --level=2 --long --icons --git'
+alias lra='lt -a'
 alias ll="eza --color=always --long --git --icons=always"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-user --no-permissions --no-time"
 
@@ -262,6 +263,89 @@ function proj() {
 # --- Smart mkdir and cd
 function mkcd() {
   mkdir -p "$1" && cd "$1"
+}
+
+# Fonction de nettoyage des fichiers temporaires et caches
+clean_home() {
+    echo "🧹 Nettoyage du répertoire home..."
+    
+    local cleaned=0
+    local errors=0
+    
+    # Fichiers et dossiers à nettoyer (uniquement les caches et temporaires)
+    local items_to_clean=(
+        "$HOME/.cache"
+        "$HOME/.npm/_cacache"
+        "$HOME/.npm/_logs"
+        "$HOME/.cargo/registry/cache"
+        "$HOME/.cargo/git/checkouts"
+        "$HOME/.gem/specs"
+        "$HOME/.cocoapods/repos"
+        "$HOME/.gradle/caches"
+        "$HOME/.bundle/cache"
+        "$HOME/.DS_Store"
+        "$HOME/**/.DS_Store"
+        "$HOME/.zcompdump*"
+        "$HOME/.psql_history"
+        "$HOME/.bash_history"
+        "$HOME/.wget-hsts"
+        "$HOME/.viminfo"
+        "$HOME/Library/Caches/Homebrew"
+        "$HOME/Library/Caches/pip"
+        "$HOME/Library/Logs"
+    )
+    
+    for item in "${items_to_clean[@]}"; do
+        # Expansion des wildcards
+        for expanded in ${~item}; do
+            if [[ -e "$expanded" ]]; then
+                echo "  → Suppression: $expanded"
+                if rm "$expanded" 2>/dev/null; then
+                    ((cleaned++))
+                else
+                    echo "    ⚠️  Erreur lors de la suppression"
+                    ((errors++))
+                fi
+            fi
+        done
+    done
+    
+    # Nettoyage Homebrew (si installé)
+    if command -v brew &> /dev/null; then
+        echo "  → Nettoyage Homebrew..."
+        brew cleanup -s 2>/dev/null
+        brew autoremove 2>/dev/null
+    fi
+    
+    # Nettoyage Docker (si installé)
+    if command -v docker &> /dev/null; then
+        echo "  → Nettoyage Docker..."
+        docker system prune -f 2>/dev/null
+    fi
+    
+    # Nettoyage npm (si installé)
+    if command -v npm &> /dev/null; then
+        echo "  → Nettoyage npm cache..."
+        npm cache clean --force 2>/dev/null
+    fi
+    
+    # Nettoyage pnpm (si installé)
+    if command -v pnpm &> /dev/null; then
+        echo "  → Nettoyage pnpm..."
+        pnpm store prune 2>/dev/null
+    fi
+    
+    echo ""
+    echo "✅ Nettoyage terminé!"
+    echo "   Éléments nettoyés: $cleaned"
+    [[ $errors -gt 0 ]] && echo "   ⚠️  Erreurs: $errors"
+    
+    # Affichage de l'espace libéré (approximatif)
+    if command -v du &> /dev/null; then
+        echo ""
+        echo "💾 Utilisation du disque:"
+        df -h ~ | tail -1 | awk '{print "   Disponible: " $4 " sur " $2}'
+    fi
 }
 
 # --- COMPLETIONS ---------------------------------------------------------------------------------------------------- #

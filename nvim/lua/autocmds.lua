@@ -31,10 +31,18 @@ autocmd("User", {
   desc = "Enable Line Number in Telescope Preview",
 })
 
-autocmd("FocusGained", {
+autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
   callback = function()
-    vim.cmd "checktime"
+    if vim.fn.mode() ~= "c" then
+      vim.cmd "checktime"
+    end
+  end,
+  group = general,
+  desc = "Update file when there are changes",
+})
 
+autocmd("VimEnter", {
+  callback = function()
     -- Check and update theme based on macOS appearance
     local handle = io.popen "defaults read -g AppleInterfaceStyle 2>/dev/null"
     if handle then
@@ -54,7 +62,7 @@ autocmd("FocusGained", {
     end
   end,
   group = general,
-  desc = "Update file when there are changes and sync theme with macOS appearance",
+  desc = "Sync theme with macOS appearance on startup",
 })
 
 autocmd("VimResized", {

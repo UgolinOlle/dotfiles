@@ -37,6 +37,9 @@
 			"ctrl-k": "workspace::ActivatePaneUp",
 			"ctrl-j": "workspace::ActivatePaneDown",
 
+			"cmd-\\": "workspace::NewCenterTerminal",
+			"cmd-shift-\\": "terminal_panel::ToggleFocus",
+
 			"space c a": "editor::ToggleCodeActions",
 			"space .": "editor::ToggleCodeActions",
 			"space c r": "editor::Rename",
