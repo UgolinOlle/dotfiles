@@ -112,7 +112,7 @@ if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode'
+if.app-id = 'com.microsoft.VSCodeInsiders'
 run = 'move-node-to-workspace 2'
 
 # Zellij integration - ensure zellij terminals stay in workspace 2
@@ -133,7 +133,7 @@ if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'io.httpie.desktop'
+if.app-id = 'com.usebruno.app'
 run = 'move-node-to-workspace 4'
 
 # Workspace 5 → Documentation
@@ -148,7 +148,7 @@ run = 'move-node-to-workspace 6'
 
 # Workspace 7 → Calendar & Email (Secondary Monitor)
 [[on-window-detected]]
-if.app-id = 'com.cron.electron'
+if.app-id = 'com.apple.iCal'
 run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]

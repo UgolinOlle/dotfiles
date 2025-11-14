@@ -21,8 +21,7 @@ local theme = appearance == "dark" and "github_dark" or "github_light"
 
 M.base46 = {
   theme = theme,
-  transparency = true,
-
+  transparency = false,
   integrations = {
     "blankline",
     "cmp",
@@ -171,6 +170,6 @@ M.gitsigns = {
   },
 }
 
-vim.opt.guifont = "JetBrains Mono:h14"
+vim.opt.guifont = "JetBrains Mono:h12"
 
 return M
