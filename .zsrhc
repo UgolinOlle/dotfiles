@@ -362,3 +362,6 @@ eval "$(rbenv init -)"
 
 alias zj="zellij --layout ~/.config/zellij/layouts/dev.kdl"
 alias zjn="zellij --layout ~/.config/zellij/layouts/nvim.kdl"
+
+# Added by Antigravity
+export PATH="/Users/uolle/.antigravity/antigravity/bin:$PATH"

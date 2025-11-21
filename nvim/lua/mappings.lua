@@ -66,6 +66,14 @@ map("n", "<leader>ih", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
 end)
 
+-- Dismiss notifications
+map(
+  "n",
+  "<LEADER>nn",
+  "<CMD>Noice dismiss<CR>",
+  { silent = true, desc = "Dismiss notification" }
+)
+
 -- Zellij navigation
 map(
   "n",
