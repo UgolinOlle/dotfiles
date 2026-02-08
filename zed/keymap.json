@@ -89,5 +89,16 @@
 			"r": "editor::Rename",
 			"a": "editor::ToggleCodeActions"
 		}
-	}
+	},
+ {
+  "context": "(Workspace && !Terminal)",
+  "bindings": {
+   "cmd-shift-r": null
+  }
+ },
+ {
+  "bindings": {
+   "cmd-shift-r": "agent::OpenClaudeCodeOnboardingModal"
+  }
+ }
 ]
