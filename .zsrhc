@@ -146,7 +146,7 @@ alias drs="docker compose down && docker compose up"
 alias g="git"
 alias lg="lazygit"
 alias ga="git add ."
-alias gcmsg="git commit -m"
+alias gcm="git commit -m"
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias glg="git log --oneline --graph --decorate"
@@ -180,21 +180,6 @@ alias zshbench="for i in {1..10}; do time zsh -i -c exit; done"
 function cdf() {
   local dir
   dir=$(fd --type d . ~ | fzf) && cd "$dir"
-}
-
-# --- Create an .env file from a template
-function envcopy() {
-  if [ ! -f ".env.example" ]; then
-    echo "❌ .env.example not found"
-    return 1
-  fi
-  cp .env.example .env && echo "✅ .env copied"
-}
-
-# --- Restart GPG agent
-function rgpg() {
-  gpgconf --kill gpg-agent
-  gpgconf --launch gpg-agent
 }
 
 # --- Find running process
@@ -245,107 +230,13 @@ function kport() {
 }
 
 # --- Generate password
-function randpw() {
+function rpw() {
   openssl rand -base64 4 | md5 | head -c$1 ; echo
 }
 
 # --- Generate sha256
 function sha256() {
     printf "%s %s\n" "$1" "$2" | sha256sum --check
-}
-
-# --- Project navigation with fzf
-function proj() {
-  local dir
-  dir=$(fd --type d --max-depth 2 . ~/Developer | fzf --preview="eza -la {}" --height=40%) && cd "$dir"
-}
-
-# --- Smart mkdir and cd
-function mkcd() {
-  mkdir -p "$1" && cd "$1"
-}
-
-# Fonction de nettoyage des fichiers temporaires et caches
-clean_home() {
-    echo "🧹 Nettoyage du répertoire home..."
-    
-    local cleaned=0
-    local errors=0
-    
-    # Fichiers et dossiers à nettoyer (uniquement les caches et temporaires)
-    local items_to_clean=(
-        "$HOME/.cache"
-        "$HOME/.npm/_cacache"
-        "$HOME/.npm/_logs"
-        "$HOME/.cargo/registry/cache"
-        "$HOME/.cargo/git/checkouts"
-        "$HOME/.gem/specs"
-        "$HOME/.cocoapods/repos"
-        "$HOME/.gradle/caches"
-        "$HOME/.bundle/cache"
-        "$HOME/.DS_Store"
-        "$HOME/**/.DS_Store"
-        "$HOME/.zcompdump*"
-        "$HOME/.psql_history"
-        "$HOME/.bash_history"
-        "$HOME/.wget-hsts"
-        "$HOME/.viminfo"
-        "$HOME/Library/Caches/Homebrew"
-        "$HOME/Library/Caches/pip"
-        "$HOME/Library/Logs"
-    )
-    
-    for item in "${items_to_clean[@]}"; do
-        # Expansion des wildcards
-        for expanded in ${~item}; do
-            if [[ -e "$expanded" ]]; then
-                echo "  → Suppression: $expanded"
-                if rm "$expanded" 2>/dev/null; then
-                    ((cleaned++))
-                else
-                    echo "    ⚠️  Erreur lors de la suppression"
-                    ((errors++))
-                fi
-            fi
-        done
-    done
-    
-    # Nettoyage Homebrew (si installé)
-    if command -v brew &> /dev/null; then
-        echo "  → Nettoyage Homebrew..."
-        brew cleanup -s 2>/dev/null
-        brew autoremove 2>/dev/null
-    fi
-    
-    # Nettoyage Docker (si installé)
-    if command -v docker &> /dev/null; then
-        echo "  → Nettoyage Docker..."
-        docker system prune -f 2>/dev/null
-    fi
-    
-    # Nettoyage npm (si installé)
-    if command -v npm &> /dev/null; then
-        echo "  → Nettoyage npm cache..."
-        npm cache clean --force 2>/dev/null
-    fi
-    
-    # Nettoyage pnpm (si installé)
-    if command -v pnpm &> /dev/null; then
-        echo "  → Nettoyage pnpm..."
-        pnpm store prune 2>/dev/null
-    fi
-    
-    echo ""
-    echo "✅ Nettoyage terminé!"
-    echo "   Éléments nettoyés: $cleaned"
-    [[ $errors -gt 0 ]] && echo "   ⚠️  Erreurs: $errors"
-    
-    # Affichage de l'espace libéré (approximatif)
-    if command -v du &> /dev/null; then
-        echo ""
-        echo "💾 Utilisation du disque:"
-        df -h ~ | tail -1 | awk '{print "   Disponible: " $4 " sur " $2}'
-    fi
 }
 
 # --- COMPLETIONS ---------------------------------------------------------------------------------------------------- #
@@ -360,8 +251,13 @@ eval "$(rbenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias zj="zellij --layout ~/.config/zellij/layouts/dev.kdl"
-alias zjn="zellij --layout ~/.config/zellij/layouts/nvim.kdl"
+# BEGIN CLAUDE HELPER SCRIPTS
+# Added by claude-helpers setup script on Fri Jan  2 19:52:04 +07 2026
+# To remove, delete everything between BEGIN and END markers
+export CLAUDE_HELPERS="/Users/uolle/.claude/scripts"
+alias chinit='cp ~/.claude/CLAUDE_PROJECT.md ./CLAUDE.md'
+alias ch='/Users/uolle/.claude/scripts/claude-helper.sh'
+alias chp='/Users/uolle/.claude/scripts/project-info.sh'
+alias chs='/Users/uolle/.claude/scripts/search-tools.sh'
+# END CLAUDE HELPER SCRIPTS
 
-# Added by Antigravity
-export PATH="/Users/uolle/.antigravity/antigravity/bin:$PATH"
