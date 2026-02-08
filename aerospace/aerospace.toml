@@ -128,6 +128,12 @@ run = [
   'move-node-to-workspace 3'
 ]
 
+[[on-window-detected]]
+if.app-id = 'com.google.chrome.for.testing'
+run = [
+  'move-node-to-workspace 3'
+]
+
 # Zellij integration - ensure zellij terminals stay in workspace 2
 [[on-window-detected]]
 if.window-title-regex-substring = '^Zellij'
