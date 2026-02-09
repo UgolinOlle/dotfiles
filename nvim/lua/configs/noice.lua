@@ -30,108 +30,52 @@ require("noice").setup {
     backend = "nui", -- backend to use to show regular cmdline completions
   },
   routes = {
+    -- Skip LSP progress messages
     {
       filter = {
         event = "lsp",
         any = {
           { find = "formatting" },
-          { find = "Diagnosing" },
-          { find = "Diagnostics" },
-          { find = "diagnostics" },
+          { find = "[Dd]iagnostic" },
           { find = "code_action" },
-          { find = "Processing full semantic tokens" },
+          { find = "semantic tokens" },
           { find = "symbols" },
           { find = "completion" },
         },
       },
       opts = { skip = true },
     },
+    -- Skip common "no results" messages
     {
       filter = {
         any = {
           { find = "No information available" },
           { find = "No references found" },
           { find = "No lines in buffer" },
-        },
-      },
-      opts = { skip = true },
-    },
-    {
-      filter = {
-        event = "notify",
-        any = {
-          { find = "^No code actions available$" },
-
-          -- Telescope
+          { find = "No code actions available" },
           { find = "Nothing currently selected" },
-          { find = "^No information available$" },
-          { find = "Highlight group" },
           { find = "no manual entry for" },
           { find = "not have parser for" },
-
-          -- Dap
-          { find = "Debug adapter didn't respond" },
-          { find = "setExceptionBreakpoints is currently not supported" },
-
-          -- ts
           { find = "_ts_parse_query" },
         },
       },
       opts = { skip = true },
     },
+    -- Skip verbose edit/save/undo messages
     {
       filter = {
         event = "msg_show",
         kind = "",
         any = {
-
-          -- Edit
-          { find = "%d+ less lines" },
-          { find = "%d+ fewer lines" },
-          { find = "%d+ more lines" },
-          { find = "%d+ change;" },
-          { find = "%d+ line less;" },
-          { find = "%d+ more lines?;" },
-          { find = "%d+ fewer lines;?" },
-          { find = '".+" %d+L, %d+B' },
-          { find = "%d+ lines yanked" },
-          { find = "^Hunk %d+ of %d+$" },
-          { find = "%d+L, %d+B$" },
-          { find = "^[/?].*" }, -- Searching up/down
-          { find = "E486: Pattern not found:" }, -- Searcingh not found
-          { find = "%d+ changes?;" }, -- Undoing/redoing
-          { find = "%d+ fewer lines" }, -- Deleting multiple lines
-          { find = "%d+ more lines" }, -- Undoing deletion of multiple lines
-          { find = "%d+ lines " }, -- Performing some other verb on multiple lines
-          { find = "Already at newest change" }, -- Redoing
-          { find = '"[^"]+" %d+L, %d+B' }, -- Saving
-
-          -- Save
-          { find = " bytes written" },
-
-          -- Redo/Undo
-          { find = " changes; before #" },
-          { find = " changes; after #" },
-          { find = "1 change; before #" },
-          { find = "1 change; after #" },
-
-          -- Yank
-          { find = " lines yanked" },
-
-          -- Move lines
-          { find = " lines moved" },
-          { find = " lines indented" },
-
-          -- Bulk edit
-          { find = " fewer lines" },
-          { find = " more lines" },
-          { find = "1 more line" },
-          { find = "1 line less" },
-
-          -- General messages
-          { find = "Already at newest change" }, -- Redoing
-          { find = "Already at oldest change" },
-          { find = "E21: Cannot make changes, 'modifiable' is off" },
+          { find = "%d+.* lines?" },      -- lines added/removed/yanked/moved/indented
+          { find = "%d+ changes?;?" },    -- undo/redo changes
+          { find = "%d+L, %d+B" },        -- file stats
+          { find = "bytes written" },     -- save
+          { find = "^Hunk %d+ of %d+$" }, -- git hunks
+          { find = "^[/?]" },             -- search patterns
+          { find = "E486:" },             -- pattern not found
+          { find = "Already at .* change" },
+          { find = "E21:" },              -- modifiable off
         },
       },
       opts = { skip = true },
