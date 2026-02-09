@@ -1,40 +1,67 @@
-require("nvchad.configs.lspconfig").defaults()
+local nvlsp = require "nvchad.configs.lspconfig"
+nvlsp.defaults()
 
+local lspconfig = require "lspconfig"
 local map = vim.keymap.set
-local signature_help = vim.lsp.buf.signature_help
 
--- Define servers with their configurations
+-- Servers to setup with default config
 local servers = {
   "html",
   "cssls",
   "tailwindcss",
-  "lua_ls",
   "emmet_ls",
-  "ts_ls",
   "eslint",
   "bashls",
   "biome",
-  "prettier",
 }
 
-vim.lsp.enable(servers)
+-- Setup each server with NvChad defaults
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
+  }
+end
 
--- vim.lsp.buf.signature_help = function(config)
---   config = config or {}
---   config.border = "rounded"
---   config.title = ""
---   return signature_help(config)
--- end
+-- Lua LSP with specific settings
+lspconfig.lua_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          vim.fn.expand "$VIMRUNTIME/lua",
+          vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
+          vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+        },
+        maxPreload = 100000,
+        preloadFileSize = 10000,
+      },
+    },
+  },
+}
 
--- Sets border for diagnostics and opens them on jump in a floating window
--- vim.diagnostic.config {
---   jump = {
---     float = true,
---   },
---   float = {
---     border = "rounded",
---   },
--- }
+-- Configure diagnostics display
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = "●",
+    spacing = 2,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = true,
+  },
+}
 
 -- Configure autoimport keymaps
 map(
