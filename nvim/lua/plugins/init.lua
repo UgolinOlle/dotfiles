@@ -28,7 +28,7 @@ return {
           "cssls",
           "tailwindcss",
           "emmet_ls",
-          "ts_ls",
+          -- ts_ls removed: typescript-tools.nvim handles TypeScript
           "eslint",
         },
         automatic_installation = true,
@@ -92,14 +92,6 @@ return {
     end,
   },
 
-  -- Auto pairs
-  {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup {}
-    end,
-  },
-
   -- Indent guides
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -120,16 +112,18 @@ return {
     version = "*",
     lazy = false,
     config = function()
-      -- Detect system theme on macOS
+      -- Detect system theme (macOS only, fallback for other OS)
       local function get_system_theme()
-        local handle =
-          io.popen "defaults read -g AppleInterfaceStyle 2>/dev/null"
-        if handle then
-          local result = handle:read "*a"
-          handle:close()
-          return result:match "Dark" and "dark" or "light"
+        if vim.fn.has "mac" ~= 1 then
+          return "dark"
         end
-        return "dark" -- fallback
+        local ok, handle = pcall(io.popen, "defaults read -g AppleInterfaceStyle 2>/dev/null")
+        if not ok or not handle then
+          return "dark"
+        end
+        local result = handle:read "*a"
+        handle:close()
+        return result:match "Dark" and "dark" or "light"
       end
 
       local theme = get_system_theme()
