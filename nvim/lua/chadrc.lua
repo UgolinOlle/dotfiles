@@ -1,22 +1,26 @@
 ---@class ChadrcConfig
 local M = {}
 
--- Function to detect macOS appearance
-local function get_macos_appearance()
-  local handle = io.popen "defaults read -g AppleInterfaceStyle 2>/dev/null"
-
-  if handle then
-    local result = handle:read "*a"
-    handle:close()
-    result = result:gsub("%s+", "")
-
-    return result == "Dark" and "dark" or "light"
+-- Function to detect system appearance (macOS only, fallback for other OS)
+local function get_system_appearance()
+  -- Only attempt on macOS
+  if vim.fn.has "mac" ~= 1 then
+    return "dark" -- default for non-macOS
   end
 
-  return "light"
+  local ok, handle = pcall(io.popen, "defaults read -g AppleInterfaceStyle 2>/dev/null")
+  if not ok or not handle then
+    return "dark"
+  end
+
+  local result = handle:read "*a"
+  handle:close()
+  result = result:gsub("%s+", "")
+
+  return result == "Dark" and "dark" or "light"
 end
 
-local appearance = get_macos_appearance()
+local appearance = get_system_appearance()
 local theme = appearance == "dark" and "github_dark" or "github_light"
 
 M.base46 = {
@@ -27,8 +31,6 @@ M.base46 = {
     "cmp",
     "defaults",
     "devicons",
-    "edgy",
-    "grug_far",
     "git",
     "lsp",
     "markview",
@@ -40,13 +42,8 @@ M.base46 = {
     "tbline",
     "telescope",
     "whichkey",
-    "dap",
-    "hop",
     "treesitter",
     "rainbowdelimiters",
-    "diffview",
-    "todo",
-    "trouble",
     "notify",
   },
 
@@ -100,6 +97,15 @@ M.lspoveride = {
 
 M.nvdash = {
   load_on_startup = true,
+  header = {
+" ██╗    ██╗██╗  ██╗ ██████╗  █████╗     ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+" ██║    ██║██║  ██║██╔═══██╗██╔══██╗    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+" ██║ █╗ ██║███████║██║   ██║███████║    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+" ██║███╗██║██╔══██║██║   ██║██╔══██║    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+" ╚███╔███╔╝██║  ██║╚██████╔╝██║  ██║    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+"  ╚══╝╚══╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ "
+                                                                                         
+  },
   buttons = require "configs.nvdash",
 }
 
@@ -117,6 +123,7 @@ M.mason = {
   "eslint_d",
   "emmet-ls",
   "rustywind",
+  "biome",
 
   -- Spell
   "marksman",

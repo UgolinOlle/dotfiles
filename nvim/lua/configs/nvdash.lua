@@ -6,7 +6,8 @@ vim.api.nvim_create_autocmd("FileType", {
       local pwd = vim.uv.cwd()
       local home = os.getenv "HOME" .. "/"
 
-      if not (home ~= pwd and not vim.tbl_contains(recent_folders, pwd)) then
+      -- Skip if we're in home dir or already tracked this project
+      if home == pwd or vim.tbl_contains(recent_folders, pwd) then
         return
       end
 
