@@ -269,3 +269,5 @@ alias chs='/Users/uolle/.claude/scripts/search-tools.sh'
 # END CLAUDE HELPER SCRIPTS
 
 eval "$(starship init zsh)"
+
+. "$HOME/.local/share/../bin/env"
