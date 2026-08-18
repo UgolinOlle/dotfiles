@@ -2,11 +2,11 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
 
-    javascript = { "prettier" },
-    typescript = { "prettier" },
+    javascript = { "oxfmt" },
+    typescript = { "oxfmt" },
 
-    javascriptreact = { "prettier" },
-    typescriptreact = { "prettier" },
+    javascriptreact = { "oxfmt" },
+    typescriptreact = { "oxfmt" },
 
     json = { "prettier" },
     jsonc = { "prettier" },
@@ -23,6 +23,14 @@ local options = {
     sh = { "shfmt" },
     bash = { "shfmt" },
     zsh = { "shfmt" },
+  },
+
+  formatters = {
+    oxfmt = {
+      command = "oxc",
+      args = { "format", "--stdin-filepath", "$FILENAME" },
+      stdin = true,
+    },
   },
 
   format_on_save = {

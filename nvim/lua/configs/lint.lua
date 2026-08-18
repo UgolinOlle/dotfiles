@@ -2,10 +2,10 @@ local lint = require "lint"
 
 -- Configure linters by filetype
 lint.linters_by_ft = {
-  javascript = { "biomejs" },
-  typescript = { "biomejs" },
-  javascriptreact = { "biomejs" },
-  typescriptreact = { "biomejs" },
+  javascript = { "oxlint" },
+  typescript = { "oxlint" },
+  javascriptreact = { "oxlint" },
+  typescriptreact = { "oxlint" },
 }
 
 -- Create autocmd for linting

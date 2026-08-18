@@ -123,7 +123,7 @@ M.mason = {
   "eslint_d",
   "emmet-ls",
   "rustywind",
-  "biome",
+  "oxlint",
 
   -- Spell
   "marksman",
