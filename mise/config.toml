@@ -2,7 +2,7 @@
 
 [tools]
 # Node.js - Use LTS for stability, can override per project
-node = "22"
+node = "22.19.0"
 
 # Bun - Keep latest
 bun = "latest"
@@ -15,6 +15,7 @@ rust = "stable"
 
 # Deno - Use latest
 deno = "latest"
+pnpm = "10.20.0"
 
 [settings]
 # Automatically install missing tools
