@@ -16,3 +16,5 @@ zsh/env.zsh
 git/
 .claude/
 configstore/
+herdr/
+psysh/

@@ -1,89 +1,100 @@
 # Neovim Configuration
 
-A modern, feature-rich Neovim configuration built on [NvChad v2.5](https://nvchad.com/) with automatic system theme detection, TypeScript/JavaScript-first development experience, and Zellij integration.
+A fast, TypeScript/JavaScript-focused Neovim setup built on [NvChad v2.5](https://nvchad.com/), with automatic macOS theme syncing, an [oxc](https://oxc.rs/)-powered lint/format toolchain, and [Zellij](https://zellij.dev/) pane integration.
 
-## Features
+This config lives at `nvim/` inside my [dotfiles](https://github.com/UgolinOlle/dotfiles) monorepo, alongside my shell, terminal, and macOS tooling.
 
-- **Automatic Theme Switching** - Detects macOS system appearance and switches between `github_dark` and `github_light` themes
-- **TypeScript/JavaScript First** - Enhanced TS/JS experience with `typescript-tools.nvim` for auto-imports, code fixes, and intelligent completions
-- **LSP & Formatting** - Pre-configured language servers with Mason auto-installation and format-on-save via Conform
-- **Zellij Integration** - Seamless pane navigation between Neovim and Zellij
-- **Modern UI** - Noice.nvim for enhanced command line, notifications, and LSP hover/signature
-- **Discord Presence** - Show what you're editing via Cord.nvim
+## Highlights
+
+- **System-aware theming** — reads macOS's `AppleInterfaceStyle` at startup and switches between `github_dark` / `github_light` automatically (same detection logic reused for `toggleterm`'s shading)
+- **oxc-first JS/TS toolchain** — [oxlint](https://oxc.rs/docs/guide/usage/linter) for linting and a custom `oxfmt` formatter wired into conform.nvim, with [typescript-tools.nvim](https://github.com/pmizio/typescript-tools.nvim) driving a fast `tsserver` instance (no `ts_ls` from Mason) and dedicated auto-import commands
+- **Custom dashboard** — the NvDash home screen is rewritten to list recent files and recent *projects* (tracked via an autocommand) with single-letter jump keys
+- **Zellij-aware navigation** — `<C-hjkl>` moves between Neovim splits and Zellij panes seamlessly
+- **Tuned Noice UI** — command line, popupmenu, and LSP hover/signature are routed through [noice.nvim](https://github.com/folke/noice.nvim), with noisy LSP progress and "no results" messages filtered out
+- **Discord Rich Presence** — toggle on demand with `:DiscordRichPresence` (wraps [cord.nvim](https://github.com/vyfor/cord.nvim))
+- **Mason-managed tooling** — LSP servers, linters, and formatters are declared once in `chadrc.lua` and auto-installed
 
 ## Requirements
 
 - **Neovim** >= 0.10.0
 - **Git**
-- **Nerd Font** (recommended: JetBrains Mono)
+- **Nerd Font** (JetBrains Mono, set as `guifont`)
 - **Node.js** (for LSP servers)
-- **ripgrep** (for Telescope live grep)
+- **ripgrep** (Telescope live grep)
+- **[Zellij](https://zellij.dev/)** (optional, for pane navigation)
 
 ## Installation
 
+This config is part of a larger dotfiles repo, so `nvim/` is a subdirectory rather than a standalone repo root.
+
 ```bash
-# Backup existing config
+# Backup any existing config
 mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
 
-# Clone the repository
-git clone https://github.com/mehmetozguldev/nvim.git ~/.config/nvim
+# Clone the dotfiles repo and symlink the nvim config
+git clone git@github.com:UgolinOlle/dotfiles.git ~/dotfiles
+ln -s ~/dotfiles/nvim ~/.config/nvim
 
-# Start Neovim (plugins will auto-install)
+# Start Neovim — plugins and Mason tools install automatically
 nvim
 ```
 
 ## Structure
 
 ```
-~/.config/nvim/
+nvim/
 ├── init.lua                 # Entry point, lazy.nvim bootstrap
+├── .stylua.toml             # Lua formatting rules
+├── .neoconf.json             # neodev/neoconf settings for lua_ls
 ├── lua/
-│   ├── chadrc.lua           # NvChad configuration (theme, UI, statusline)
+│   ├── chadrc.lua           # NvChad config: theme detection, UI, Mason tool list
 │   ├── options.lua          # Vim options
 │   ├── mappings.lua         # Key mappings
 │   ├── autocmds.lua         # Autocommands
-│   ├── commands.lua         # Custom commands
+│   ├── commands.lua         # Custom user commands (DiscordRichPresence)
 │   ├── configs/
-│   │   ├── conform.lua      # Formatter configuration
-│   │   ├── lspconfig.lua    # LSP server setup
-│   │   ├── lint.lua         # Linter configuration
-│   │   ├── noice.lua        # Noice UI configuration
-│   │   ├── nvdash.lua       # Dashboard buttons
-│   │   ├── lazy.lua         # Lazy.nvim options
+│   │   ├── conform.lua      # Formatter configuration (oxfmt, prettier, stylua...)
+│   │   ├── lspconfig.lua    # LSP server setup + import keymaps
+│   │   ├── lint.lua         # nvim-lint (oxlint) configuration
+│   │   ├── noice.lua        # Noice UI + message filtering
+│   │   ├── nvdash.lua       # Custom dashboard (recent files/projects)
+│   │   ├── lazy.lua         # lazy.nvim options
 │   │   ├── cmp.lua          # Completion configuration
 │   │   └── luasnip.lua      # Snippet configuration
 │   └── plugins/
 │       ├── init.lua         # Plugin specifications
-│       ├── telescope.lua    # Telescope setup
+│       ├── telescope.lua    # Telescope + ui-select setup
 │       └── gitgraph.lua     # Git graph plugin
 ```
 
 ## Plugins
 
-| Category | Plugin | Description |
-|----------|--------|-------------|
+| Category | Plugin | Purpose |
+|----------|--------|---------|
 | **Core** | [NvChad](https://github.com/NvChad/NvChad) | Base configuration framework |
-| **LSP** | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP configurations |
-| | [mason.nvim](https://github.com/williamboman/mason.nvim) | LSP/DAP/Linter installer |
-| | [typescript-tools.nvim](https://github.com/pmizio/typescript-tools.nvim) | Enhanced TypeScript support |
+| **LSP** | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP client configuration |
+| | [mason.nvim](https://github.com/williamboman/mason.nvim) + [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim) | LSP/lint/format tool installer |
+| | [typescript-tools.nvim](https://github.com/pmizio/typescript-tools.nvim) | Fast TS/JS server, auto-import, code fixes |
+| | [nvim-lspimport](https://github.com/stevanmilic/nvim-lspimport) | Cross-language auto-import |
 | **Completion** | [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Autocompletion engine |
-| | [LuaSnip](https://github.com/L3MON4D3/LuaSnip) | Snippet engine |
-| **Formatting** | [conform.nvim](https://github.com/stevearc/conform.nvim) | Formatter runner |
-| | [nvim-lint](https://github.com/mfussenegger/nvim-lint) | Async linting |
-| **UI** | [noice.nvim](https://github.com/folke/noice.nvim) | Enhanced UI for messages, cmdline, popupmenu |
+| | [LuaSnip](https://github.com/L3MON4D3/LuaSnip) + [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) | Snippet engine + snippet collection |
+| | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto-close brackets, cmp integration |
+| **Formatting/Linting** | [conform.nvim](https://github.com/stevearc/conform.nvim) | Formatter runner, format-on-save |
+| | [nvim-lint](https://github.com/mfussenegger/nvim-lint) | Async linting (oxlint) |
+| **UI** | [noice.nvim](https://github.com/folke/noice.nvim) | Command line, popupmenu, LSP hover UI |
 | | [nvim-notify](https://github.com/rcarriga/nvim-notify) | Notification manager |
-| | [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) | Indent guides |
+| | [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | Indent guides |
 | | [markview.nvim](https://github.com/OXY2DEV/markview.nvim) | Markdown preview |
-| **Navigation** | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy finder |
+| | [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | File icons |
+| **Navigation** | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) (+ [ui-select](https://github.com/nvim-telescope/telescope-ui-select.nvim)) | Fuzzy finder |
 | | [zellij-nav.nvim](https://git.sr.ht/~swaits/zellij-nav.nvim) | Zellij pane navigation |
-| **Git** | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git decorations |
+| **Git** | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git decorations, hunk preview, blame |
 | | [gitgraph.nvim](https://github.com/isakbm/gitgraph.nvim) | Git graph visualization |
 | **Editing** | [nvim-surround](https://github.com/kylechui/nvim-surround) | Surround text objects |
 | | [Comment.nvim](https://github.com/numToStr/Comment.nvim) | Smart commenting |
-| | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto-close brackets |
-| | [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) | Syntax-aware text objects |
-| **Terminal** | [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) | Terminal management |
+| | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) + [textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) | Syntax-aware highlighting & text objects |
+| **Terminal** | [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) | Terminal management, theme-aware shading |
 | **Other** | [cord.nvim](https://github.com/vyfor/cord.nvim) | Discord Rich Presence |
 
 ## Key Mappings
@@ -92,93 +103,80 @@ Leader key: `Space`
 
 ### General
 
-| Key | Mode | Description |
-|-----|------|-------------|
+| Key | Mode | Action |
+|-----|------|--------|
 | `<leader>w` | n | Save file |
 | `Q` | n | Close window |
-| `;` | n | Command mode |
+| `;` | n | Enter command mode |
 | `jk` / `kj` | i | Exit insert mode |
 | `<leader><leader>` | n | Find files (Telescope) |
-| `sv` | n | Vertical split |
-| `ss` | n | Horizontal split |
+| `sv` / `ss` | n | Split vertically / horizontally |
 | `<leader>b` | n | New buffer |
-| `<leader>th` | n | Change theme |
+| `<leader>th` | n | Change theme (Telescope) |
+| `<leader>nn` | n | Dismiss notifications (Noice) |
 
-### LSP
+### LSP & Imports
 
-| Key | Mode | Description |
-|-----|------|-------------|
-| `K` | n | Hover documentation |
+| Key | Mode | Action |
+|-----|------|--------|
+| `K` | n | Hover documentation (rounded border) |
 | `<leader>ca` | n | Code actions |
-| `<leader>fm` | n, v | Format file/selection |
-| `<leader>dy` | n | Copy diagnostic to clipboard |
+| `<leader>fm` | n, v | Format file / selection |
+| `<leader>dy` | n | Copy diagnostic under cursor to clipboard |
 | `<leader>ih` | n | Toggle inlay hints |
-
-### Imports (TypeScript)
-
-| Key | Mode | Description |
-|-----|------|-------------|
-| `<leader>io` | n | Import symbol under cursor |
-| `<leader>ia` | n | Import all missing symbols |
-| `<leader>to` | n | Organize imports |
-| `<leader>ts` | n | Sort imports |
-| `<leader>tr` | n | Remove unused imports |
-| `<leader>ti` | n | Add missing imports |
+| `<leader>l` | n | Trigger lint |
+| `<leader>io` / `<leader>ia` | n | Import symbol under cursor / import all missing |
+| `<leader>to` / `<leader>ts` | n | Organize imports / sort imports (TS) |
+| `<leader>tr` / `<leader>ti` | n | Remove unused / add missing imports (TS) |
 | `<leader>tf` | n | Fix all TS issues |
 
 ### Git
 
-| Key | Mode | Description |
-|-----|------|-------------|
+| Key | Mode | Action |
+|-----|------|--------|
 | `<leader>gp` | n | Preview hunk |
 | `<leader>gb` | n | Blame line |
-| `<leader>gl` | n | Git graph |
+| `<leader>gl` | n | Draw git graph |
 
-### Navigation
+### Navigation & Terminal
 
-| Key | Mode | Description |
-|-----|------|-------------|
+| Key | Mode | Action |
+|-----|------|--------|
 | `<C-h/j/k/l>` | n | Navigate Zellij panes |
 | `<C-\>` | n, t | Toggle terminal |
 
-### Notifications
-
-| Key | Mode | Description |
-|-----|------|-------------|
-| `<leader>nn` | n | Dismiss notifications |
-
 ## LSP Servers
 
-Automatically installed via Mason:
+Installed automatically via Mason (`chadrc.lua`) and configured in `configs/lspconfig.lua`:
 
 | Language | Server |
 |----------|--------|
-| Lua | `lua_ls` |
-| TypeScript/JavaScript | `typescript-tools` (dedicated plugin) |
+| Lua | `lua_ls` (with NvChad/Lazy library paths preloaded) |
+| TypeScript/JavaScript | `typescript-tools.nvim` (dedicated plugin, not Mason) |
 | HTML | `html` |
-| CSS | `cssls` |
-| Tailwind | `tailwindcss` |
+| CSS | `cssls`, `tailwindcss` |
+| Web (JSON/CSS-in-JS) | `biome` |
 | Emmet | `emmet_ls` |
 | ESLint | `eslint` |
-| JSON | `json-lsp` |
 | Bash | `bashls` |
+| JSON | `json-lsp` |
 | Docker | `dockerfile-language-server`, `docker-compose-language-service` |
 | Markdown | `marksman` |
 
-## Formatters
+## Formatting & Linting
 
-Configured via Conform with format-on-save:
+JS/TS formatting and linting run on [oxc](https://oxc.rs/) for speed; everything else falls back to Prettier or dedicated formatters. Format-on-save is enabled via conform.nvim (`configs/conform.lua`), linting runs on `BufEnter` / `BufWritePost` / `InsertLeave` via nvim-lint (`configs/lint.lua`).
 
-| Language | Formatter |
-|----------|-----------|
-| Lua | `stylua` |
-| JavaScript/TypeScript | `prettier` |
-| JSON/JSONC | `prettier` |
-| HTML/CSS | `prettier` |
-| Markdown | `prettier` |
-| YAML | `prettier` |
-| SQL | `sqlfmt` |
-| Shell | `shfmt` |
+| Language | Formatter | Linter |
+|----------|-----------|--------|
+| Lua | `stylua` | — |
+| JavaScript/TypeScript (+ JSX/TSX) | `oxfmt` (oxc) | `oxlint` |
+| JSON/JSONC | `prettier` | — |
+| HTML/CSS | `prettier` | — |
+| Markdown | `prettier` | — |
+| YAML | `prettier` | — |
+| SQL | `sqlfmt` | — |
+| Shell (sh/bash/zsh) | `shfmt` | — |
 
 ## Treesitter Languages
 
@@ -188,7 +186,7 @@ Auto-installed: `vim`, `lua`, `vimdoc`, `html`, `css`, `javascript`, `typescript
 
 ### Theme
 
-The theme automatically syncs with macOS system appearance. To manually set a theme:
+The theme automatically syncs with macOS system appearance (`lua/chadrc.lua`). To pin a theme manually:
 
 ```lua
 -- lua/chadrc.lua
@@ -197,27 +195,27 @@ M.base46 = {
 }
 ```
 
-### Adding LSP Servers
+### Adding LSP servers
 
 ```lua
 -- lua/configs/lspconfig.lua
 local servers = {
   "html",
   "cssls",
-  -- Add your server here
+  -- add your server here
 }
 ```
 
-### Adding Formatters
+### Adding formatters
 
 ```lua
 -- lua/configs/conform.lua
 formatters_by_ft = {
   python = { "black" },
-  -- Add your formatter here
+  -- add your formatter here
 }
 ```
 
 ## License
 
-MIT
+MIT — see the [dotfiles LICENSE](../LICENSE).

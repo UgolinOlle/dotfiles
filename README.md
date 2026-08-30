@@ -73,6 +73,11 @@ This repository contains my personal dotfiles, featuring configurations for deve
 - Runtime version manager
 - Development environment configuration
 
+**Starship**
+
+- Cross-shell prompt
+- Git status, language versions, custom segments
+
 **Raycast**
 
 - Productivity launcher
@@ -94,7 +99,7 @@ Clone the repository to your `.config` directory:
 
 ```bash
 cd ~/.config
-git clone <repository-url> .
+git clone git@github.com:UgolinOlle/dotfiles.git .
 ```
 
 ### Dependencies
@@ -111,6 +116,7 @@ brew install koekeishiya/formulae/skhd
 brew install lazygit
 brew install lazydocker
 brew install mise
+brew install starship
 brew install --cask raycast
 ```
 
@@ -118,7 +124,7 @@ brew install --cask raycast
 
 ### Neovim
 
-Location: `~/.config/nvim`
+Location: `~/.config/nvim` — see [nvim/README.md](nvim/README.md) for the full breakdown (plugins, keymaps, LSP servers).
 
 Custom IDE configuration with modular structure. Modify settings through configuration files in `lua/` directory.
 
@@ -136,7 +142,7 @@ Editor configuration with custom keybindings in `keymap.json` and settings in `s
 
 ### Aerospace
 
-Location: `~/.config/aerospace/`
+Location: `~/.config/aerospace/` — see [aerospace/README.md](aerospace/README.md) for workspace layout and keybindings.
 
 Window manager configuration for tiling layouts and workspace management.
 
@@ -160,21 +166,27 @@ Terminal multiplexer with custom layouts and keybindings.
 
 ### Lazygit
 
-Location: `~/.config/lazygit/`
+Location: `~/.config/lazygit/config.yml`
 
-Git client configuration for terminal-based workflow.
+Git client configuration: Nerd Font icons, file tree view, auto-fetch, emoji parsing.
 
 ### Lazydocker
 
-Location: `~/.config/lazydocker/`
+Location: `~/.config/lazydocker/config.yml`
 
-Docker management interface configuration.
+Docker management interface configuration: log timestamps and lookback window.
 
 ### Mise
 
 Location: `~/.config/mise/`
 
 Runtime version manager configuration for development tools.
+
+### Starship
+
+Location: `~/.config/starship.toml`
+
+Prompt segments, colors, and module ordering for the shell prompt.
 
 ## Customization
 
@@ -197,4 +209,5 @@ Each tool's configuration is self-contained and can be modified independently.
 - [Lazygit](https://github.com/jesseduffield/lazygit)
 - [Lazydocker](https://github.com/jesseduffield/lazydocker)
 - [Mise](https://mise.jdx.dev/)
+- [Starship](https://starship.rs/)
 - [Raycast](https://raycast.com/)
