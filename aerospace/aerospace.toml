@@ -69,10 +69,6 @@ cmd-alt-l           = 'join-with right'
 alt-shift-minus     = 'resize smart -50'
 alt-shift-equal     = 'resize smart +50'
 
-# Quick jump: editor / terminal
-alt-e = 'workspace 2'
-alt-t = 'workspace 3'
-
 # Change workspaces
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'

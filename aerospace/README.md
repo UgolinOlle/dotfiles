@@ -46,8 +46,6 @@ floating instead of tiling.
 | Key            | Action                                  |
 |----------------|------------------------------------------|
 | `alt-1`…`alt-0`| Switch to workspace 1–9, 0               |
-| `alt-e`        | Jump to editor (workspace 2)             |
-| `alt-t`        | Jump to terminal (workspace 3)           |
 | `alt-tab`      | Back-and-forth to last workspace         |
 | `alt-shift-tab`| Move current workspace to next monitor   |
 | `ctrl-shift-tab`| Move current window to next monitor     |
