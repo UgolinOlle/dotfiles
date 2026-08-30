@@ -1,7 +1,6 @@
 local nvlsp = require "nvchad.configs.lspconfig"
 nvlsp.defaults()
 
-local lspconfig = require "lspconfig"
 local map = vim.keymap.set
 
 -- Servers to setup with default config
@@ -16,16 +15,15 @@ local servers = {
 }
 
 -- Setup each server with NvChad defaults
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
-end
+vim.lsp.config("*", {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+})
+vim.lsp.enable(servers)
 
 -- Lua LSP with specific settings
-lspconfig.lua_ls.setup {
+vim.lsp.config("lua_ls", {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
@@ -45,7 +43,8 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable "lua_ls"
 
 -- Configure diagnostics display
 vim.diagnostic.config {
