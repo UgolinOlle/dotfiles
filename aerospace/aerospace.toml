@@ -36,6 +36,8 @@ outer.left       = 10
 alt-slash           = 'layout tiles horizontal vertical'
 alt-comma           = 'layout accordion horizontal vertical'
 alt-shift-f         = 'fullscreen'
+alt-shift-r         = 'flatten-workspace-tree'
+alt-shift-0         = 'balance-sizes'
 
 # Workspace navigation
 alt-tab             = 'workspace-back-and-forth'
@@ -57,9 +59,19 @@ alt-shift-j         = 'move down'
 alt-shift-k         = 'move up'
 alt-shift-l         = 'move right'
 
+# Join windows into a container (no mode switch needed)
+cmd-alt-h           = 'join-with left'
+cmd-alt-j           = 'join-with down'
+cmd-alt-k           = 'join-with up'
+cmd-alt-l           = 'join-with right'
+
 # Resize windows
 alt-shift-minus     = 'resize smart -50'
 alt-shift-equal     = 'resize smart +50'
+
+# Quick jump: editor / terminal
+alt-e = 'workspace 2'
+alt-t = 'workspace 3'
 
 # Change workspaces
 alt-1 = 'workspace 1'
@@ -85,19 +97,16 @@ cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
 cmd-shift-0 = 'move-node-to-workspace 0'
 
+# Move window to workspace and follow it (editor / terminal only)
+cmd-alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+cmd-alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+
 # ─── Keybindings: Service Mode ──────────────────────────────────────────────────
 [mode.service.binding]
 
 esc         = ['reload-config', 'mode main']
-r           = ['flatten-workspace-tree', 'mode main']          # Reset layout
 f           = ['layout floating tiling', 'mode main']          # Toggle layout
 backspace   = ['close-all-windows-but-current', 'mode main']
-
-# Merge containers
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
 
 # ─── Workspace Organization (Work-Optimized) ──────────────────────────────────
 
@@ -106,7 +115,7 @@ alt-shift-l = ['join-with right', 'mode main']
 if.app-id = 'company.thebrowser.dia'
 run = 'move-node-to-workspace 1'
 
-# Workspace 2 → Code Editors & Terminal
+# Workspace 2 → Code Editor
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCodeInsiders'
 run = 'move-node-to-workspace 2'
@@ -119,7 +128,7 @@ run = [
 ]
 
 [[on-window-detected]]
-if.app-id = 'dev.kdrag0n.MacVirt'
+if.app-id = 'com.utmapp.UTM'
 run = [
   'move-node-to-workspace 3'
 ]
@@ -130,7 +139,7 @@ run = [
   'move-node-to-workspace 3'
 ]
 
-# Zellij integration - ensure zellij terminals stay in workspace 2
+# Zellij integration - ensure zellij terminals stay in workspace 3
 [[on-window-detected]]
 if.window-title-regex-substring = '^Zellij'
 run = 'move-node-to-workspace 3'
@@ -141,7 +150,7 @@ if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'com.usebruno.app'
+if.app-id = 'com.anthropic.claudefordesktop'
 run = 'move-node-to-workspace 4'
 
 # Workspace 5 → Documentation

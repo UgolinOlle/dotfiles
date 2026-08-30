@@ -134,8 +134,8 @@ alias bp="brew update && brew upgrade && brew autoremove && brew cleanup && brew
 alias bs="brew services"
 
 # --- PostgreSQL
-alias pgstart="brew services start postgresql@15"
-alias pgstop="brew services stop postgresql@15"
+alias pgstart="brew services start postgresql@18"
+alias pgstop="brew services stop postgresql@18"
 alias pgcli="psql postgres"
 
 # --- Docker
