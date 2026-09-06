@@ -1,0 +1,14 @@
+{
+  "trustedformulae": [
+    "hashicorp/tap/terraform",
+    "libsql/sqld/sqld"
+  ],
+  "trustedtaps": [
+    "gromgit/brewtils",
+    "theboredteam/boring-notch"
+  ],
+  "trustedcasks": [
+    "nikitabobko/tap/aerospace",
+    "theboredteam/boring-notch/boring-notch"
+  ]
+}
