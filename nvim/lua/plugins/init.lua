@@ -2,6 +2,8 @@ return {
 
   {
     "stevearc/conform.nvim",
+    event = { "BufWritePre", "InsertLeave" },
+    cmd = { "ConformInfo" },
     opts = require "configs.conform",
   },
 
@@ -56,6 +58,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     opts = {
       ensure_installed = {
         "vim",
@@ -150,6 +153,7 @@ return {
   -- Better syntax highlighting for multiple languages
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
 
