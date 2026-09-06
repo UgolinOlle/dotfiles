@@ -154,6 +154,10 @@ run = 'move-node-to-workspace 4'
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace 5'
 
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Word'
+run = 'move-node-to-workspace 5'
+
 # Workspace 6 → Design
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
@@ -166,6 +170,10 @@ run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
 run = 'move-node-to-workspace 7'
 
 # Workspace 8 / 9 → Communication (Secondary Monitor)
