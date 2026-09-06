@@ -49,6 +49,14 @@ autocmd("VimResized", {
   desc = "Equalize Splits",
 })
 
+autocmd("InsertLeave", {
+  callback = function()
+    require("conform").format { lsp_fallback = true }
+  end,
+  group = general,
+  desc = "Format buffer on leaving insert mode",
+})
+
 -- Disable line numbers for specific filetypes
 local no_numbers = augroup("NoLineNumbers", { clear = true })
 
