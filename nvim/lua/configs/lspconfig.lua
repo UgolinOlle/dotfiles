@@ -3,6 +3,24 @@ nvlsp.defaults()
 
 local map = vim.keymap.set
 
+-- NvChad's LspAttach autocmd (registered inside nvlsp.defaults() above) runs
+-- nvlsp.on_attach and sets gd/gr to vim.lsp.buf.definition/references.
+-- Neovim always fires LspAttach autocmds BEFORE the client config's on_attach
+-- field, so wrapping our override here (used as the on_attach field below)
+-- guarantees it runs last and wins, for every server including
+-- typescript-tools.nvim (which inherits this via the "*" config below).
+local function on_attach(client, bufnr)
+  nvlsp.on_attach(client, bufnr)
+
+  local opts = { buffer = bufnr }
+  map("n", "gd", function()
+    require("telescope.builtin").lsp_definitions { jump_type = "never" }
+  end, vim.tbl_extend("force", opts, { desc = "LSP Go to definition" }))
+  map("n", "gr", function()
+    require("telescope.builtin").lsp_references { jump_type = "never" }
+  end, vim.tbl_extend("force", opts, { desc = "LSP References" }))
+end
+
 -- Servers to setup with default config
 local servers = {
   "html",
@@ -16,7 +34,7 @@ local servers = {
 
 -- Setup each server with NvChad defaults
 vim.lsp.config("*", {
-  on_attach = nvlsp.on_attach,
+  on_attach = on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 })
@@ -24,7 +42,7 @@ vim.lsp.enable(servers)
 
 -- Lua LSP with specific settings
 vim.lsp.config("lua_ls", {
-  on_attach = nvlsp.on_attach,
+  on_attach = on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   settings = {

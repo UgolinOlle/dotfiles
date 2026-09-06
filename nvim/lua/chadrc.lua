@@ -81,20 +81,6 @@ M.ui = {
   },
 }
 
-M.disabled = {
-  n = {
-    ["gd"] = "",
-    ["gr"] = "",
-  },
-}
-
-M.lspoveride = {
-  n = {
-    ["gd"] = { "<cmd>Telescope <CR>", "definitions" },
-    ["gr"] = { "<cmd>Telescope <CR>", "references" },
-  },
-}
-
 M.nvdash = {
   load_on_startup = true,
   header = {
