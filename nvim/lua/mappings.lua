@@ -64,7 +64,7 @@ end, { desc = "Copy diagnostic to clipboard" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
 map("n", "<leader>ih", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
-end)
+end, { desc = "Toggle inlay hints" })
 
 -- Dismiss notifications
 map(
@@ -104,3 +104,35 @@ map(
 map("n", "<leader>gl", function()
   require("gitgraph").draw({}, { all = true, max_count = 5000 })
 end, { desc = "GitGraph - Draw" })
+
+-- Diffview
+map("n", "<leader>gd", "<cmd>DiffviewOpen<CR>", { desc = "Diffview: open" })
+map(
+  "n",
+  "<leader>gh",
+  "<cmd>DiffviewFileHistory %<CR>",
+  { desc = "Diffview: file history" }
+)
+map(
+  "n",
+  "<leader>gq",
+  "<cmd>DiffviewClose<CR>",
+  { desc = "Diffview: close" }
+)
+
+-- Trouble
+map(
+  "n",
+  "<leader>xx",
+  "<cmd>Trouble diagnostics toggle<CR>",
+  { desc = "Trouble: diagnostics" }
+)
+map(
+  "n",
+  "<leader>xd",
+  "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+  { desc = "Trouble: buffer diagnostics" }
+)
+
+-- Kubernetes
+map("n", "<leader>K", "<cmd>Kubectl<CR>", { desc = "Kubectl: open" })

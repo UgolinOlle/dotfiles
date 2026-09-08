@@ -122,6 +122,24 @@ M.mason = {
   "dockerfile-language-server",
   "hadolint",
   "docker-compose-language-service",
+
+  -- Yaml
+  "yaml-language-server",
+  "yamllint",
+
+  -- Terraform
+  "terraform-ls",
+  "tflint",
+
+  -- Ansible
+  "ansible-language-server",
+  "ansible-lint",
+
+  -- Shell
+  "shellcheck",
+
+  -- Toml
+  "taplo",
 }
 
 M.terminal = {

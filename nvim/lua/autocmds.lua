@@ -3,6 +3,22 @@ require "nvchad.autocmds"
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+-- Distinguish Ansible/compose YAML from plain YAML so ansiblels/
+-- docker_compose_language_service attach instead of (or alongside) yamlls.
+vim.filetype.add {
+  pattern = {
+    [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/tasks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
+    [".*/group_vars/.*"] = "yaml.ansible",
+    [".*/host_vars/.*"] = "yaml.ansible",
+    ["playbook%.ya?ml"] = "yaml.ansible",
+    ["site%.ya?ml"] = "yaml.ansible",
+    ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
+    ["compose.*%.ya?ml"] = "yaml.docker-compose",
+  },
+}
+
 -- General settings
 local general = augroup("General", { clear = true })
 

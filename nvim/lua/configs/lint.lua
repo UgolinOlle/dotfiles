@@ -6,6 +6,22 @@ lint.linters_by_ft = {
   typescript = { "oxlint" },
   javascriptreact = { "oxlint" },
   typescriptreact = { "oxlint" },
+
+  json = { "jsonlint" },
+  jsonc = { "jsonlint" },
+
+  yaml = { "yamllint" },
+  ["yaml.docker-compose"] = { "yamllint" },
+  ["yaml.ansible"] = { "yamllint", "ansible_lint" },
+
+  dockerfile = { "hadolint" },
+
+  terraform = { "tflint" },
+  tf = { "tflint" },
+
+  sh = { "shellcheck" },
+  bash = { "shellcheck" },
+  zsh = { "shellcheck" },
 }
 
 -- Create autocmd for linting

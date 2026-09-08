@@ -30,6 +30,9 @@ local servers = {
   "eslint",
   "bashls",
   "biome",
+  "dockerls",
+  "docker_compose_language_service",
+  "terraformls",
 }
 
 -- Setup each server with NvChad defaults
@@ -39,6 +42,44 @@ vim.lsp.config("*", {
   capabilities = nvlsp.capabilities,
 })
 vim.lsp.enable(servers)
+
+-- JSON with SchemaStore (package.json, tsconfig, GH Actions, k8s json, etc.)
+vim.lsp.config("jsonls", {
+  on_attach = on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+vim.lsp.enable "jsonls"
+
+-- YAML with SchemaStore (Kubernetes, docker-compose, GH/GitLab CI, etc.)
+vim.lsp.config("yamlls", {
+  on_attach = on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    yaml = {
+      schemaStore = { enable = false, url = "" },
+      schemas = require("schemastore").yaml.schemas(),
+      validate = true,
+    },
+  },
+})
+vim.lsp.enable "yamlls"
+
+-- Ansible (only attaches to yaml.ansible, detected in autocmds.lua by path)
+vim.lsp.config("ansiblels", {
+  on_attach = on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "yaml.ansible" },
+})
+vim.lsp.enable "ansiblels"
 
 -- Lua LSP with specific settings
 vim.lsp.config("lua_ls", {

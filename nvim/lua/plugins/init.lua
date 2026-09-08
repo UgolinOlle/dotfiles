@@ -40,7 +40,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "mason.nvim", "mason-lspconfig.nvim" },
+    dependencies = { "mason.nvim", "mason-lspconfig.nvim", "b0o/schemastore.nvim" },
     config = function()
       require "configs.lspconfig"
     end,
@@ -70,9 +70,19 @@ return {
         "typescript",
         "tsx",
         "json",
+        "json5",
         "yaml",
         "markdown",
         "bash",
+        "dockerfile",
+        "terraform",
+        "hcl",
+        "toml",
+        "ini",
+        "git_config",
+        "gitignore",
+        "gitcommit",
+        "ssh_config",
       },
     },
   },
@@ -340,6 +350,41 @@ return {
       ---@diagnostic disable-next-line: different-requires
       vim.lsp.handlers["textDocument/signatureHelp"] =
         require("noice").signature
+    end,
+  },
+
+  -- JSON/YAML schemas (Kubernetes, docker-compose, CI configs, etc.)
+  { "b0o/schemastore.nvim", lazy = true },
+
+  -- Git diff/review UI, handy for reviewing infra-as-code changes
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+  },
+
+  -- Aggregated diagnostics list across buffers
+  {
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    opts = {},
+  },
+
+  -- REST client for testing cloud/HTTP APIs from .http files
+  {
+    "mistweaverco/kulala.nvim",
+    ft = { "http", "rest" },
+    opts = {
+      global_keymaps = true,
+    },
+  },
+
+  -- Kubernetes cluster browser (pods, deployments, logs, etc.)
+  {
+    "ramilito/kubectl.nvim",
+    cmd = "Kubectl",
+    dependencies = { "saghen/blink.download" },
+    config = function()
+      require("kubectl").setup()
     end,
   },
 }
