@@ -19,3 +19,5 @@ configstore/
 herdr/
 psysh/
 colima/
+wireshark/recent
+wireshark/recent_common
