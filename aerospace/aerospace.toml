@@ -176,6 +176,12 @@ run = 'move-node-to-workspace 7'
 if.app-id = 'com.microsoft.Outlook'
 run = 'move-node-to-workspace 7'
 
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = 'move-node-to-workspace 7'
+
+
+
 # Workspace 8 / 9 → Communication (Secondary Monitor)
 [[on-window-detected]]
 if.app-id = 'com.automattic.beeper.desktop'
