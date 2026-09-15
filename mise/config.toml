@@ -13,10 +13,6 @@ python = "3.12"
 # Rust - Use stable channel
 rust = "stable"
 
-# Deno - Use latest
-deno = "latest"
-pnpm = "10.20.0"
-
 [settings]
 # Automatically install missing tools
 auto_install = true
