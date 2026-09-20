@@ -5,10 +5,12 @@
   ],
   "trustedtaps": [
     "gromgit/brewtils",
+    "saragordic/tap",
     "theboredteam/boring-notch"
   ],
   "trustedcasks": [
     "nikitabobko/tap/aerospace",
+    "saragordic/tap/window-sweaters",
     "theboredteam/boring-notch/boring-notch"
   ]
 }
