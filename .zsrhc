@@ -43,8 +43,6 @@ autoload -Uz _zinit
 source ~/.config/zsh/plugins.zsh
 
 # --- EXTERNAL TOOL INIT ----------------------------------------------------------------------------------------- #
-# Everything here that hooks into shell startup lives in one place. Starship must stay last so it
-# wins the prompt over anything else that tries to set one.
 
 # --- pnpm
 export PNPM_HOME="/Users/uolle/Library/pnpm"
@@ -263,3 +261,6 @@ alias chs='/Users/uolle/.claude/scripts/search-tools.sh'
 # --- LOCAL ENV --------------------------------------------------------------------------------------------------- #
 
 . "$HOME/.local/bin/env"
+
+# bun completions
+[ -s "/Users/uolle/.oh-my-zsh/completions/_bun" ] && source "/Users/uolle/.oh-my-zsh/completions/_bun"
