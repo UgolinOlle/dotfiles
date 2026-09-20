@@ -140,7 +140,7 @@ run = [
 if.window-title-regex-substring = '^Zellij'
 run = 'move-node-to-workspace 3'
 
-# Workspace 4 → Database Management & API Testing
+# Workspace 4 → Database Management & API Testing & AI
 [[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace 4'
@@ -180,8 +180,6 @@ run = 'move-node-to-workspace 7'
 if.app-id = 'com.microsoft.teams2'
 run = 'move-node-to-workspace 7'
 
-
-
 # Workspace 8 / 9 → Communication (Secondary Monitor)
 [[on-window-detected]]
 if.app-id = 'com.automattic.beeper.desktop'
@@ -194,6 +192,10 @@ run = 'move-node-to-workspace 9'
 # Workspace 0 → System Utilities (Secondary Monitor)
 [[on-window-detected]]
 if.app-id = 'com.apple.ActivityMonitor'
+run = 'move-node-to-workspace 0'
+
+[[on-window-detected]]
+if.app-id = 'org.openvpn.client.app'
 run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
