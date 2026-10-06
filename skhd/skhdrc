@@ -13,6 +13,11 @@ cmd + alt - f : open -a "Figma"
 cmd + alt - o : open -a "NordVPN"
 cmd + alt - e : open -a "OpenVPN Connect"
 cmd + alt - v : open -a "Visual Studio Code - Insiders"
+cmd + alt - r : open -a "RexaDB"
+cmd + alt - g : open -a "GitHub Copilot"
+cmd + alt - b : open -a "Grok Bot"
+cmd + alt + shift - x : open -a "Xcode"
+cmd + alt + shift - w : open -a "Wireshark"
 
 alt - return : open -a "Ghostty"
 alt - f : open ~ 

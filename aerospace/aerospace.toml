@@ -116,6 +116,10 @@ run = 'move-node-to-workspace 1'
 if.app-id = 'com.microsoft.VSCodeInsiders'
 run = 'move-node-to-workspace 2'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
+run = 'move-node-to-workspace 2'
+
 # Workspace 3 → Development Tools
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
@@ -135,6 +139,14 @@ run = [
   'move-node-to-workspace 3'
 ]
 
+[[on-window-detected]]
+if.app-id = 'org.wireshark.Wireshark'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.netacad.PacketTracer9.0.1'
+run = 'move-node-to-workspace 3'
+
 # Zellij integration - ensure zellij terminals stay in workspace 3
 [[on-window-detected]]
 if.window-title-regex-substring = '^Zellij'
@@ -147,6 +159,18 @@ run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.rexadb'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.anysphere.sand'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.m365copilot'
 run = 'move-node-to-workspace 4'
 
 # Workspace 5 → Documentation
