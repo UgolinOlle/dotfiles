@@ -10,6 +10,7 @@
   ],
   "trustedcasks": [
     "nikitabobko/tap/aerospace",
+    "pkhorenyan/tap/termstead",
     "saragordic/tap/window-sweaters",
     "theboredteam/boring-notch/boring-notch"
   ]
