@@ -43,3 +43,6 @@ zed/settings_backup.json
 .env.*
 *.local.*
 gh/hosts.yml
+
+# Git hook scripts installed by a work gh extension (machine-specific)
+andegave/
