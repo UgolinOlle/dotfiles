@@ -22,3 +22,24 @@ colima/
 wireshark/recent
 wireshark/recent_common
 context7/
+
+# OS / editor noise
+.DS_Store
+*.swp
+*~
+
+# Python cache (cheatsheet scripts)
+__pycache__/
+*.pyc
+
+# Machine state written by tools
+swiftpm/
+.nuxtrc
+homebrew/trust.json.lock
+zed/settings_backup.json
+
+# Secrets safety net
+.env
+.env.*
+*.local.*
+gh/hosts.yml
