@@ -40,6 +40,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+fpath=(~/.zsh/completions $fpath)  # must be set before compinit (runs in plugins.zsh)
 source ~/.config/zsh/plugins.zsh
 
 # --- EXTERNAL TOOL INIT ----------------------------------------------------------------------------------------- #
@@ -98,7 +99,7 @@ alias nm="nmap -sC -sV -oN nmap"
 alias ports="lsof -i -P -n | grep LISTEN"
 
 # --- Clean
-alias clean:node="rm -rf node_modules package-lock.json && npm install"
+alias clean:node="command rm -rf node_modules package-lock.json && npm install"
 alias clean:laravel="php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
 alias clean:docker="docker system prune -af --volumes"
 
@@ -108,14 +109,16 @@ alias dd="cd ~/Documents"
 alias dw="cd ~/Downloads"
 alias wh="cd ~/Developer/whoa-projects/"
 alias conf="cd ~/.config"
+alias aes="python3 -I ~/.config/aerospace/cheatsheet.py"
+alias zs="python3 -I ~/.config/zsh/cheatsheet.py"
 alias h="cd ~"
 alias ..="cd .."
-alias f="nvim \$(fzf --layout=reverse --border --info=inline --margin=4,20 --padding=1 --preview='batcat --color=always --style=plain {}' --style=full)"
-alias fd="cd \$(fzf --layout=reverse --border --info=inline --margin=4,20 --padding=1 --preview='batcat --color=always --style=plain {}' --style=full)"
+alias f="nvim \$(fzf --layout=reverse --border --info=inline --margin=4,20 --padding=1 --preview='bat --color=always --style=plain {}' --style=full)"
+alias fd="cd \$(fzf --layout=reverse --border --info=inline --margin=4,20 --padding=1 --preview='bat --color=always --style=plain {}' --style=full)"
 
 # --- List
 alias lr='eza --tree --level=2 --long --icons --git'
-alias lra='lt -a'
+alias lra='lr -a'
 alias ll="eza --color=always --long --git --header --icons=always"
 alias ls="eza --color=always --long --git --no-filesize --icons --no-user --no-permissions --no-time"
 
@@ -168,7 +171,7 @@ alias ni="npm install"
 alias nu="npm uninstall"
 alias nl="npm list"
 alias nr="npm run"
-alias nc="rm -rf node_modules && npm cache clean --force"
+alias nc="command rm -rf node_modules && npm cache clean --force"
 alias dev="npm run dev"
 
 # --- Health & Maintenance
@@ -183,7 +186,7 @@ alias rme="glow ~/.config/zsh/README.md"
 # --- CD into a specific folder
 function cdf() {
   local dir
-  dir=$(fd --type d . ~ | fzf) && cd "$dir"
+  dir=$(command fd --type d . ~ | fzf) && cd "$dir"
 }
 
 # --- Find running process
@@ -242,10 +245,6 @@ function rpw() {
 function sha256check() {
     printf "%s %s\n" "$1" "$2" | sha256sum --check
 }
-
-# --- COMPLETIONS ---------------------------------------------------------------------------------------------------- #
-
-fpath=(~/.zsh/completions $fpath)
 
 # --- CLAUDE HELPER SCRIPTS ------------------------------------------------------------------------------------------ #
 # BEGIN CLAUDE HELPER SCRIPTS
