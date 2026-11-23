@@ -95,7 +95,7 @@ M.nvdash = {
   buttons = require "configs.nvdash",
 }
 
-M.mason = {
+local mason_pkgs = {
   -- Lua
   "lua-language-server",
   "stylua",
@@ -142,7 +142,9 @@ M.mason = {
   "taplo",
 }
 
-M.terminal = {
+M.mason = { pkgs = mason_pkgs, skip = {} }
+
+M.term = {
   winopts = {
     winfixbuf = true,
     number = false,

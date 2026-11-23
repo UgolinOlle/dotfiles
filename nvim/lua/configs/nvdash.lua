@@ -88,7 +88,7 @@ local function set_recent_folders(tb)
       no_gap = true,
       content = "fit",
       group = "recent_files",
-      cmd = "Lazy",
+      cmd = "cd " .. vim.fn.fnameescape(v) .. " | Telescope find_files",
     }
 
     table.insert(line, { txt = "  ", hl = "nviminternalError" })

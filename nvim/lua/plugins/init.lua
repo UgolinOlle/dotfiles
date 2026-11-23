@@ -9,18 +9,12 @@ return {
 
   {
     "OXY2DEV/markview.nvim",
+    ft = "markdown",
   },
 
-  -- Mason for automatic LSP server installation
+  -- Mason opts come from NvChad (nvchad.configs.mason); mason.nvim itself is declared there
   {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-
-  {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     dependencies = { "mason.nvim" },
     config = function()
       require("mason-lspconfig").setup {
@@ -33,7 +27,6 @@ return {
           -- ts_ls removed: typescript-tools.nvim handles TypeScript
           "eslint",
         },
-        automatic_installation = true,
       }
     end,
   },
@@ -49,6 +42,7 @@ return {
   -- Discord Rich Presence
   {
     "vyfor/cord.nvim",
+    event = "VeryLazy",
     build = ":Cord update",
     -- opts = {}
     config = function()
@@ -56,11 +50,14 @@ return {
     end,
   },
 
+  -- main branch ignores ensure_installed: parsers must be requested via install()
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    opts = {
-      ensure_installed = {
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter").install {
         "vim",
         "lua",
         "vimdoc",
@@ -83,8 +80,15 @@ return {
         "gitignore",
         "gitcommit",
         "ssh_config",
-      },
-    },
+      }
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          if pcall(vim.treesitter.start, args.buf) then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
+    end,
   },
 
   { import = "plugins.telescope" },
@@ -92,26 +96,7 @@ return {
   -- Git integration
   {
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup()
-    end,
-  },
-
-  -- Better commenting
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
-  },
-
-  -- Indent guides
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    config = function()
-      require("ibl").setup()
-    end,
+    opts = { signs = require("chadrc").gitsigns.signs },
   },
 
   -- File explorer improvements
@@ -171,6 +156,7 @@ return {
   {
     "kylechui/nvim-surround",
     version = "*",
+    event = "VeryLazy",
     config = function()
       require("nvim-surround").setup {}
     end,
@@ -201,6 +187,7 @@ return {
   -- Auto import functionality for multiple languages
   {
     "stevanmilic/nvim-lspimport",
+    cmd = { "LspImportCurrent", "LspImportAll" },
     config = function()
       require("lspimport").setup()
     end,
@@ -221,26 +208,10 @@ return {
     lazy = true,
     event = "VeryLazy",
     keys = {
-      {
-        "<c-h>",
-        "<cmd>ZellijNavigateLeft<cr>",
-        { silent = true, desc = "navigate left" },
-      },
-      {
-        "<c-j>",
-        "<cmd>ZellijNavigateDown<cr>",
-        { silent = true, desc = "navigate down" },
-      },
-      {
-        "<c-k>",
-        "<cmd>ZellijNavigateUp<cr>",
-        { silent = true, desc = "navigate up" },
-      },
-      {
-        "<c-l>",
-        "<cmd>ZellijNavigateRight<cr>",
-        { silent = true, desc = "navigate right" },
-      },
+      { "<c-h>", "<cmd>ZellijNavigateLeft<cr>", silent = true, desc = "navigate left" },
+      { "<c-j>", "<cmd>ZellijNavigateDown<cr>", silent = true, desc = "navigate down" },
+      { "<c-k>", "<cmd>ZellijNavigateUp<cr>", silent = true, desc = "navigate up" },
+      { "<c-l>", "<cmd>ZellijNavigateRight<cr>", silent = true, desc = "navigate right" },
     },
     opts = {},
   },
@@ -294,7 +265,7 @@ return {
           cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources(
-              { { name = "path" } },
+              { { name = "async_path" } },
               { { name = "cmdline" } }
             ),
             matching = { disallow_symbol_nonprefix_matching = false },
@@ -303,16 +274,6 @@ return {
       },
     },
 
-    {
-      -- cmp sources plugins
-      {
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "https://codeberg.org/FelipeLema/cmp-async-path.git",
-      },
-    },
     opts = function()
       return require "nvchad.configs.cmp"
     end,
@@ -345,11 +306,6 @@ return {
     },
     config = function()
       require "configs.noice"
-      ---@diagnostic disable-next-line: different-requires
-      vim.lsp.handlers["textDocument/hover"] = require("noice").hover
-      ---@diagnostic disable-next-line: different-requires
-      vim.lsp.handlers["textDocument/signatureHelp"] =
-        require("noice").signature
     end,
   },
 
@@ -386,5 +342,11 @@ return {
     config = function()
       require("kubectl").setup()
     end,
+  },
+
+  -- File tree on the right (merged into NvChad's nvim-tree opts)
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = { view = { side = "right" } },
   },
 }

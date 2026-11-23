@@ -32,21 +32,17 @@ map(
   { desc = "Git blame line" }
 )
 
--- Terminal mappings
-map("n", "<C-\\>", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
-map("t", "<C-\\>", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
-
 -- Theme switching
 map("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Change theme" })
 map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
 
 -- Formatting mappings
 map("n", "<leader>fm", function()
-  require("conform").format { lsp_fallback = true }
+  require("conform").format { lsp_format = "fallback" }
 end, { desc = "Format file or range" })
 
 map("v", "<leader>fm", function()
-  require("conform").format { lsp_fallback = true }
+  require("conform").format { lsp_format = "fallback" }
 end, { desc = "Format selection" })
 
 -- LSP
@@ -75,30 +71,10 @@ map(
 )
 
 -- Zellij navigation
-map(
-  "n",
-  "<C-h>",
-  "<cmd>ZellijNavigateLeft<cr>",
-  { silent = true, desc = "Navigate left" }
-)
-map(
-  "n",
-  "<C-j>",
-  "<cmd>ZellijNavigateDown<cr>",
-  { silent = true, desc = "Navigate down" }
-)
-map(
-  "n",
-  "<C-k>",
-  "<cmd>ZellijNavigateUp<cr>",
-  { silent = true, desc = "Navigate up" }
-)
-map(
-  "n",
-  "<C-l>",
-  "<cmd>ZellijNavigateRight<cr>",
-  { silent = true, desc = "Navigate right" }
-)
+map("n", "<C-h>", "<cmd>ZellijNavigateLeft<cr>", { silent = true, desc = "Navigate left" })
+map("n", "<C-j>", "<cmd>ZellijNavigateDown<cr>", { silent = true, desc = "Navigate down" })
+map("n", "<C-k>", "<cmd>ZellijNavigateUp<cr>", { silent = true, desc = "Navigate up" })
+map("n", "<C-l>", "<cmd>ZellijNavigateRight<cr>", { silent = true, desc = "Navigate right" })
 
 -- Git graph
 map("n", "<leader>gl", function()
@@ -123,13 +99,13 @@ map(
 -- Trouble
 map(
   "n",
-  "<leader>xx",
+  "<leader>tx",
   "<cmd>Trouble diagnostics toggle<CR>",
   { desc = "Trouble: diagnostics" }
 )
 map(
   "n",
-  "<leader>xd",
+  "<leader>td",
   "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
   { desc = "Trouble: buffer diagnostics" }
 )

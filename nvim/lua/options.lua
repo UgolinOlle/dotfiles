@@ -15,7 +15,7 @@ o.ruler = true
 o.number = true
 o.relativenumber = true
 
-o.cc = "+1"
+o.cc = "80"
 o.mouse = ""
 o.mousemodel = "popup"
 o.mousefocus = false
