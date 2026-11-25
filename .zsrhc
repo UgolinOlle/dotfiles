@@ -100,7 +100,6 @@ alias ports="lsof -i -P -n | grep LISTEN"
 
 # --- Clean
 alias clean:node="command rm -rf node_modules package-lock.json && npm install"
-alias clean:laravel="php artisan cache:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear"
 alias clean:docker="docker system prune -af --volumes"
 
 # --- Paths
@@ -166,14 +165,6 @@ alias nz="nv ~/.zshrc"
 alias ns="sudo nvim"
 alias nenv="nv .env"
 
-# --- NPM
-alias ni="npm install"
-alias nu="npm uninstall"
-alias nl="npm list"
-alias nr="npm run"
-alias nc="command rm -rf node_modules && npm cache clean --force"
-alias dev="npm run dev"
-
 # --- Health & Maintenance
 alias zshtime="time zsh -i -c exit"
 alias zshbench="for i in {1..10}; do time zsh -i -c exit; done"
@@ -238,24 +229,14 @@ function kport() {
 
 # --- Generate password
 function rpw() {
-  openssl rand -base64 4 | md5 | head -c$1 ; echo
+  openssl rand -base64 4 | md5 | head -c$1
+  echo
 }
 
 # --- Verify a file against a known sha256 checksum (usage: sha256check <checksum> <file>)
 function sha256check() {
-    printf "%s %s\n" "$1" "$2" | sha256sum --check
+  printf "%s %s\n" "$1" "$2" | sha256sum --check
 }
-
-# --- CLAUDE HELPER SCRIPTS ------------------------------------------------------------------------------------------ #
-# BEGIN CLAUDE HELPER SCRIPTS
-# Added by claude-helpers setup script on Fri Jan  2 19:52:04 +07 2026
-# To remove, delete everything between BEGIN and END markers
-export CLAUDE_HELPERS="/Users/uolle/.claude/scripts"
-alias chinit='cp ~/.claude/CLAUDE_PROJECT.md ./CLAUDE.md'
-alias ch='/Users/uolle/.claude/scripts/claude-helper.sh'
-alias chp='/Users/uolle/.claude/scripts/project-info.sh'
-alias chs='/Users/uolle/.claude/scripts/search-tools.sh'
-# END CLAUDE HELPER SCRIPTS
 
 # --- LOCAL ENV --------------------------------------------------------------------------------------------------- #
 
