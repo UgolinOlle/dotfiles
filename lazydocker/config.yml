@@ -1,7 +1,49 @@
 gui:
-  language: "en"
+  returnImmediately: true # don't wait for "press enter" after commands
+  wrapMainPanel: true
+  expandFocusedSidePanel: true # selected panel gets more room
+  sidePanelWidth: 0.3
+  showBottomLine: true # keeps key hints visible at the bottom
+  theme:
+    activeBorderColor: [green, bold]
+    selectedLineBgColor: [blue]
+
 logs:
   timestamps: false
-  since: "60m"
-update:
-  method: never
+  since: "30m"
+  tail: "300"
+
+commandTemplates:
+  dockerCompose: docker compose
+
+customCommands:
+  containers:
+    - name: "bash shell"
+      attach: true
+      command: "docker exec -it {{ .Container.ID }} bash"
+    - name: "sh shell (alpine)"
+      attach: true
+      command: "docker exec -it {{ .Container.ID }} sh"
+    - name: "follow logs in less"
+      attach: true
+      command: 'sh -c "docker logs -f --tail 500 {{ .Container.ID }} 2>&1 | less +F"'
+    - name: "copy container ID"
+      command: 'sh -c "echo {{ .Container.ID }} | pbcopy"'
+  services:
+    - name: "rebuild & restart"
+      attach: true
+      command: "{{ .DockerCompose }} up -d --build {{ .Service.Name }}"
+    - name: "pull latest image"
+      attach: true
+      command: "{{ .DockerCompose }} pull {{ .Service.Name }}"
+
+bulkCommands:
+  images:
+    - name: "remove dangling images"
+      command: "docker image prune -f"
+  volumes:
+    - name: "remove unused volumes"
+      command: "docker volume prune -f"
+  containers:
+    - name: "remove all stopped"
+      command: "docker container prune -f"
