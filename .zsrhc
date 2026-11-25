@@ -100,6 +100,7 @@ alias dv="cd ~/Developer"
 alias dd="cd ~/Documents"
 alias dw="cd ~/Downloads"
 alias wh="cd ~/Developer/whoa-projects/"
+alias ad="cd ~/Developer/andegave/"
 alias conf="cd ~/.config"
 alias aes="python3 -I ~/.config/aerospace/cheatsheet.py"
 alias zs="python3 -I ~/.config/zsh/cheatsheet.py"
@@ -129,7 +130,10 @@ alias pgcli="psql postgres"
 
 # --- Docker
 alias d="docker"
-alias ld="lazydocker"
+alias ld='lazydocker'
+alias cstart='colima start'
+alias cstop='colima stop'
+alias cstat='colima status && docker context ls'
 alias da="docker start"
 alias dx="docker exec -it"
 alias dc="docker compose"
@@ -144,6 +148,7 @@ alias lg="lazygit"
 alias ga="git add ."
 alias gb="git branch"
 alias gcm="git commit -m"
+alias gpl="git pull"
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias glg="git log --oneline --graph --decorate"
