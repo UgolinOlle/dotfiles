@@ -10,11 +10,9 @@
     "theboredteam/boring-notch"
   ],
   "trustedcasks": [
-    "farvisun/tap/nicedock",
     "https://github.com/louis-cfm/coucou/couco",
     "https://github.com/whoastudio/whoa-type.git/whoa-type",
     "nikitabobko/tap/aerospace",
-    "pkhorenyan/tap/termstead",
     "saragordic/tap/window-sweaters",
     "theboredteam/boring-notch/boring-notch",
     "whoastudio/local-validation/whoa-type",
