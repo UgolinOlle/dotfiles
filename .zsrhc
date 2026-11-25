@@ -38,19 +38,12 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+((${+_comps})) && _comps[zinit]=_zinit
 
-fpath=(~/.zsh/completions $fpath)  # must be set before compinit (runs in plugins.zsh)
+fpath=(~/.zsh/completions $fpath) # must be set before compinit (runs in plugins.zsh)
 source ~/.config/zsh/plugins.zsh
 
 # --- EXTERNAL TOOL INIT ----------------------------------------------------------------------------------------- #
-
-# --- pnpm
-export PNPM_HOME="/Users/uolle/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 # --- Git Delta
 if command -v delta &>/dev/null; then
