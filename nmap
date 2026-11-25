@@ -1,0 +1,3 @@
+# Nmap 7.993 scan initiated Wed Nov 25 21:14:18 2026 as: nmap -sC -sV -oN nmap
+WARNING: No targets were specified, so 0 hosts scanned.
+# Nmap done at Wed Nov 25 21:14:18 2026 -- 0 IP addresses (0 hosts up) scanned in 0.41 seconds
