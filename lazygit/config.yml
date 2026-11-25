@@ -1,8 +1,51 @@
 gui:
-  nerdFontsVersion: "3"
   showFileTree: true
+  showRandomTip: false
+  showBottomLine: true
+  nerdFontsVersion: "3" # remove if you don't use a Nerd Font
+  sidePanelWidth: 0.33
+  expandFocusedSidePanel: true
+  theme:
+    activeBorderColor: [green, bold]
+    selectedLineBgColor: [blue]
 git:
   autoFetch: true
-  parseEmoji: true
-update:
-  method: never
+  diffRenderers:
+    - colorArg: always
+      command: delta --dark --paging=never
+  log:
+    showGraph: always
+os:
+  editPreset: "nvim"
+customCommands:
+  - key: "<c-c>"
+    context: "files"
+    description: "Conventional commit"
+    prompts:
+      - type: "menu"
+        key: "Type"
+        title: "Commit type"
+        options:
+          - {value: "feat", description: "New feature"}
+          - {value: "fix", description: "Bug fix"}
+          - {value: "chore", description: "Maintenance"}
+          - {value: "refactor", description: "Code change, no behaviour change"}
+          - {value: "docs", description: "Documentation"}
+          - {value: "test", description: "Tests"}
+      - type: "input"
+        key: "Scope"
+        title: "Scope (optional)"
+      - type: "input"
+        key: "Msg"
+        title: "Message"
+    command: >-
+      git commit -m "{{.Form.Type}}{{if .Form.Scope}}({{.Form.Scope}}){{end}}: {{.Form.Msg}}"
+  - key: "G"
+    context: "localBranches"
+    description: "Open or create GitHub PR"
+    command: "gh pr view --web || gh pr create --web"
+  - key: "<c-p>"
+    context: "global"
+    description: "Prune merged local branches"
+    command: >-
+      sh -c 'git fetch -p && git branch --merged | grep -vE "^\*|main|master|develop" | xargs -r git branch -d'
