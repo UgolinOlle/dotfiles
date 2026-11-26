@@ -46,3 +46,6 @@ gh/hosts.yml
 
 # Git hook scripts installed by a work gh extension (machine-specific)
 andegave/
+
+# Android emulator and SDK data (machine-specific)
+.android/
