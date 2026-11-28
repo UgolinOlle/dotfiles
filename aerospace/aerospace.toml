@@ -27,16 +27,16 @@ outer.left = 10
 #   5-7 : built-in Retina display
 #   8-0 : PL2493H (1)
 [workspace-to-monitor-force-assignment]
-1 = ['PL2493H \(2\)', 'main']
-2 = ['PL2493H \(2\)', 'main']
-3 = ['PL2493H \(2\)', 'main']
-4 = ['PL2493H \(2\)', 'main']
+1 = ['PL2493H \(2\)', 'MSI G255F', 'main']
+2 = ['PL2493H \(2\)', 'MSI G255F', 'main']
+3 = ['PL2493H \(2\)', 'MSI G255F', 'main']
+4 = ['PL2493H \(2\)', 'MSI G255F', 'main']
 5 = ['built-in', 'main']
 6 = ['built-in', 'main']
 7 = ['built-in', 'main']
-8 = ['PL2493H \(1\)', 'main']
-9 = ['PL2493H \(1\)', 'main']
-0 = ['PL2493H \(1\)', 'main']
+8 = ['PL2493H \(1\)', 'VG2448', 'main']
+9 = ['PL2493H \(1\)', 'VG2448', 'main']
+0 = ['PL2493H \(1\)', 'VG2448', 'main']
 
 # ─── Keybindings: Main Mode ─────────────────────────────────────────────────────
 [mode.main.binding]
