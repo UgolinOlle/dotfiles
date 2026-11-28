@@ -91,6 +91,12 @@ map(
 )
 map(
   "n",
+  "<leader>gH",
+  "<cmd>DiffviewFileHistory<CR>",
+  { desc = "Diffview: repo history" }
+)
+map(
+  "n",
   "<leader>gq",
   "<cmd>DiffviewClose<CR>",
   { desc = "Diffview: close" }

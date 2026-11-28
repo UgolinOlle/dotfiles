@@ -365,7 +365,15 @@ return {
   -- Git diff/review UI, handy for reviewing infra-as-code changes
   {
     "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewFileHistory",
+      "DiffviewToggleFiles",
+      "DiffviewFocusFiles",
+      "DiffviewRefresh",
+    },
+    opts = { enhanced_diff_hl = true },
   },
 
   -- Aggregated diagnostics list across buffers

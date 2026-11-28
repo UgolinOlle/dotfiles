@@ -1,5 +1,6 @@
 return {
   "isakbm/gitgraph.nvim",
+  dependencies = { "sindrets/diffview.nvim" },
 
   opts = {
     git_cmd = "git",
@@ -13,10 +14,10 @@ return {
     },
     hooks = {
       on_select_commit = function(commit)
-        print("selected commit:", commit.hash)
+        vim.cmd("DiffviewOpen " .. commit.hash .. "^!")
       end,
       on_select_range_commit = function(from, to)
-        print("selected range:", from.hash, to.hash)
+        vim.cmd("DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
       end,
     },
   },
