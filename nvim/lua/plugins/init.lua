@@ -96,7 +96,57 @@ return {
   -- Git integration
   {
     "lewis6991/gitsigns.nvim",
-    opts = { signs = require("chadrc").gitsigns.signs },
+    opts = {
+      signs = require("chadrc").gitsigns.signs,
+      current_line_blame_opts = { delay = 300 },
+      preview_config = { border = "rounded" },
+      on_attach = function(bufnr)
+        local gs = require "gitsigns"
+        local function map(mode, lhs, rhs, desc)
+          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+        end
+
+        -- Hunk navigation (falls back to native ]c/[c inside diff mode)
+        map("n", "]h", function()
+          if vim.wo.diff then
+            vim.cmd.normal { "]c", bang = true }
+          else
+            gs.nav_hunk "next"
+          end
+        end, "Git: next hunk")
+        map("n", "[h", function()
+          if vim.wo.diff then
+            vim.cmd.normal { "[c", bang = true }
+          else
+            gs.nav_hunk "prev"
+          end
+        end, "Git: prev hunk")
+
+        -- Hunk actions
+        map("n", "<leader>gs", gs.stage_hunk, "Git: stage/unstage hunk")
+        map("n", "<leader>gr", gs.reset_hunk, "Git: reset hunk")
+        map("v", "<leader>gs", function()
+          gs.stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+        end, "Git: stage selection")
+        map("v", "<leader>gr", function()
+          gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+        end, "Git: reset selection")
+        map("n", "<leader>gS", gs.stage_buffer, "Git: stage buffer")
+        map("n", "<leader>gR", gs.reset_buffer, "Git: reset buffer")
+        map("n", "<leader>gi", gs.preview_hunk_inline, "Git: preview hunk inline")
+        map("n", "<leader>gB", gs.blame, "Git: blame file")
+        map("n", "<leader>gQ", function()
+          gs.setqflist "all"
+        end, "Git: hunks to quickfix")
+
+        -- Toggles
+        map("n", "<leader>gT", gs.toggle_current_line_blame, "Git: toggle line blame")
+        map("n", "<leader>gw", gs.toggle_word_diff, "Git: toggle word diff")
+
+        -- Text object: ih = inner hunk
+        map({ "o", "x" }, "ih", gs.select_hunk, "Git: select hunk")
+      end,
+    },
   },
 
   -- File explorer improvements
